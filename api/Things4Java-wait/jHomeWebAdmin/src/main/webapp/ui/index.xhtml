@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" lang="en">
+
+  <head>
+    <title>jHome 1.0 Reference Implementation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/ui/css/reset.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/ui/css/layout.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/ui/css/style.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/ui/css/prettyPhoto.css" type="text/css" media="all"/>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/jquery-1.5.2.js" ></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/mobilyblocks.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/script.js"></script>
+    <script src="#{facesContext.externalContext.requestContextPath}/ui/js/jquery.transform-0.9.3.min.js"></script>
+    <script src="#{facesContext.externalContext.requestContextPath}/ui/js/superfish.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/atooltip.jquery.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/pages.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/jScrollPane.js"></script>
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/jquery.mousewheel.js"></script>
+    <link rel="stylesheet" media="screen" type="text/css" href="#{facesContext.externalContext.requestContextPath}/ui/css/colorpicker.css" />
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/colorpicker.js"></script>
+    <!--<script type="text/javascript" src="js/contact-form.js"></script>-->
+    <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/ui/js/jquery.prettyPhoto.js"></script>
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="js/html5.js"></script>
+    <style type="text/css">
+      .addit_menu > li > a, #contact-form .bg, .download-box p{ behavior: url(js/PIE.htc); }
+    </style>
+    <![endif]-->
+    <!--[if lt IE 8]>
+      <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg" border="0"  alt="" /></a>
+      </div>
+    <![endif]-->
+
+    <script type="text/javascript" charset="utf-8">
+      //<![CDATA[
+      $(document).ready(function(){ 
+        var lastNote;
+        var lampon=false;
+        var aberto=false;
+        var identificador = self.setInterval(atualizar, 300);
+        function atualizar() {
+                  var requestUrl =
+                    '../resources/sensor';
+                  $.getJSON(requestUrl,
+                  function(data) {
+                    var target = $('input[name=heartTarget]');
+                    var heartType = $('input[name=heartType]');
+                    /*if(heartType.val()=="<=") {  
+                      if(data.heartBeat<= target.val()) {
+                        window.location.replace("http://www.globalcode.com.br");
+                      }
+                    }
+                    if(heartType.val()=="==") {  
+                      if(data.heartBeat== target.val()) {
+                        window.location.replace("http://www.globalcode.com.br");
+                      }
+                    }*/
+                    //if(heartType.val()==">=") {  
+                      /*if(data.heartBeat>=   target.val() && ! aberto) {
+                        window.location.replace("http://sergioyamada.com.br");
+                        aberto=true;
+                      }*/
+                    //}
+                    //if(data.note==lastNote) return;
+                    //alert(data.note);
+                    /*lastNote=data.note;
+                    var dataString;
+                    if(data.note=="B Si") {
+                      $.ajax({  
+                        type: "GET",  
+                        url: "../Light",  
+                        success: function() {  
+                        }  
+                      }); 
+                     
+                    }
+                    else if(data.note=="A Lá") {
+                      dataString = 'red=255&green=0&blue=0';  
+                    }
+                    else if(data.note=="B Si") {
+                      dataString = 'red=0&green=255&blue=0';  
+                    }
+                    else if(data.note=="D Ré") {
+                      dataString = 'red=0&green=0&blue=255';  
+                    }
+
+                    if(data.note!=lastNote && dataString!=null) {
+                      $.ajax({  
+                        type: "POST",  
+                        url: "../RGBController",  
+                        data: dataString,  
+                        success: function() {  
+                        } 
+                      });
+                      lastNote = data.note;
+                    }*/
+
+                    $('#sensorHeart').html(data.heartBeat);
+                    $('#sensorHeart1').html(data.heartBeat);
+                    $('#sensorTemperature').html(data.temperatureCelsius);
+                    $('#sensorTemperatureBluetooth').html(data.temperatureCelsius1);
+                    $('#sensorLight').html(data.light);
+                    $('#sensorNote').html(data.note);                    
+                    $('#sensorDistance').html(data.distance);
+                  });
+        };
+      var rgb1;
+        $('#jhome1-color').ColorPicker({
+          color: '#0000ff',
+          onShow: function (colpkr) {
+            $(colpkr).fadeIn(500);
+            return false;
+          },
+          onHide: function (colpkr) {
+            $(colpkr).fadeOut(500);
+            var dataString = "red="+ rgb1.r + "&green=" + rgb1.g + "&blue=" + rgb1.b;  
+            //alert(dataString);
+            $.ajax({  
+              type: "POST",  
+              url: "../RGBController",  
+              data: dataString,  
+              success: function() {  
+              }  
+            });  
+            return false;
+          },
+          onChange: function (hsb, hex, rgb) {
+            $('#jhome1-color').css('background-color', '#' + hex);            
+            rgb1 = rgb;
+          }
+          
+        });
+        $('#lampControl').click(function() {
+          if(lampon) $('#lampControl').attr("src", "images/icons/lamp3-off.png");
+          else  $('#lampControl').attr("src", "images/icons/lamp3.png");
+          lampon=!lampon; 
+          $.ajax({  
+            type: "GET",  
+            url: "../Light",  
+            success: function() {  
+
+            }  
+          }); 
+          
+        });
+        $('#Startup').click(function() {
+          $.ajax({  
+            type: 'GET',  
+            url: '../Startup',  
+            data: '',  
+            success: function() {  
+            }  
+
+          }); 
+        });        
+        $('#StopSensor').click(function() {
+          $.ajax({  
+            type: 'GET',  
+            url: '../Startup?action=off',  
+            data: '',  
+            success: function() {  
+            }  
+
+          }); 
+        });        
+
+        $('#StopTwitter').click(function() {
+          $.ajax({  
+            type: 'GET',  
+            url: '../Twitter?action=off',  
+            data: '',  
+            success: function() {  
+            }  
+
+          }); 
+        }); 
+        $('#StartTwitter').click(function() {
+          $.ajax({  
+            type: 'GET',  
+            url: '../Twitter?action=on',  
+            data: '',  
+            success: function() {  
+            }  
+
+          }); 
+        });        
+        $('#Discovery1').click(function() {
+          $.ajax({  
+            type: 'GET',  
+            url: '../Discovery',  
+            data: '',  
+            success: function() {  
+              alert('Just called Discovery!');
+            }  
+
+          }); 
+        });
+      
+        $('#imageTemperature').click(function() {
+          var requestUrl =
+            '../resources/sensor';
+          $.getJSON(requestUrl,
+          function(data) {
+            $('#sensorTemperature').html(data.temperatureCelsius);
+            $('#sensorTemperatureBluetooth').html(data.temperatureCelsius1);
+            $('#sensorLight').html(data.light);
+            $('#sensorDistance').html(data.distance);
+          });
+
+        }); 
+        $('form#coffeescheduler').submit(function() {         
+          var when = $('input[name=when]');
+          var howlong = $('input[name=howLong]');
+          var dataString = 'when=' + when.val() 
+            +  "&howLong=" + howlong.val()
+            + "&relayName=relay2";
+          $.ajax({  
+            type: 'GET',  
+            url: '../Agendador',  
+            data: dataString,  
+            success: function() {  
+              $('#feedbackdiv').html('<p>Coffee Scheduled!</p>');
+            }
+          });
+          return false;
+
+        });        
+        
+        $('form#contact-form').submit(function() { 
+          
+          var red = $('input[name=red]');
+          var green = $('input[name=green]');
+          var blue = $('input[name=blue]');
+          var dataString = 'red='+ red.val() + '&amp;green=' + green.val() + '&amp;blue=' + blue.val();  
+          //alert(dataString);
+          $.ajax({  
+            type: 'POST',  
+            url: '../RGBController',  
+            data: dataString,  
+            success: function() {  
+            
+              //$('#contact-form').html("<div id='message'></div>");  
+              //$('#message').html("<h2>Contact Form Submitted!</h2>")  
+              //.append("<p>We will be in touch soon.</p>")  
+              //.hide()  
+              //.fadeIn(1500, function() {  
+              //  $('#message').append("<img id='checkmark' src='images/check.png' />");  
+              //});  
+            }  
+          });  
+          return false;
+        });        
+      }); 
+       //]]>
+    </script>
+  </head>
+
+  <body>
+    <div class="spinner"><div><div></div></div></div>
+    <div class="extra">
+      <div class="main">
+        <!--header -->
+        <header>
+          <div class="wrapper">
+            <h1><a href="index.html" id="logo">Education and Innovation Company</a></h1>
+            <div class="login">
+              <ul id="icons">
+                <li><a href="#" class="normaltip" title="Twitter"><img src="images/icon2.png"/></a></li>
+                <li><a href="#" class="normaltip" title="Facebook"><img src="images/icon3.png"/></a></li>
+              </ul>
+              <a href="http://www.globalcode.com.br">Globalcode</a> Social
+            </div>
+          </div>
+        </header>
+        <!--header end-->
+        <!--content -->
+        <section id="content">
+          <ul>
+            <li id="page_0">
+              <div class="inner">
+                <nav class="menu">
+                  <ul id="menu" class="reset">
+                    <li id="nav1"><a href="#page_0"><img src="images/nav1.png" alt="" class="img"/><img src="images/nav1_active.png" alt="" class="img_act"/></a></li>
+                    <li id="nav7"><a href="#page_6"><img src="images/nav7.png" alt="" class="img"/><img src="images/nav7_active.png" alt="" class="img_act"/></a></li>
+                    <li id="nav6"><a href="#page_5"><img src="images/nav6.png" alt="" class="img"/><img src="images/nav6_active.png" alt="" class="img_act"/></a></li>
+                    <li id="nav5"><a href="#page_4"><img src="images/nav5.png" alt="" class="img"/><img src="images/nav5_active.png" alt="" class="img_act"/></a></li>
+                    <li id="nav4"><a href="#page_3"><img src="images/nav4.png" alt="" class="img"/><img src="images/nav4_active.png" alt="" class="img_act"/></a></li>
+                    <li id="nav3"><a href="#page_2"><img src="images/nav3.png" alt="" class="img"/><img src="images/nav3_active.png" alt="" class="img_act"/></a></li>
+                    <li id="nav2"><a href="#page_1"><img src="images/nav2.png" alt="" class="img"/><img src="images/nav2_active.png" alt="" class="img_act"/></a></li>
+                  </ul>
+                </nav>
+                <div class="menu_box">
+                  <div class="images">
+                    <span class="nav1"></span>
+                    <span class="nav2"></span>
+                    <span class="nav3"></span>
+                    <span class="nav4"></span>
+                    <span class="nav5"></span>
+                    <span class="nav6"></span>
+                    <span class="nav7"></span>
+                    <span class="nav8"></span>
+                    <span class="nav9"></span>
+                  </div>
+                  <div class="tittles">
+                    <div class="nav1">
+                      <h2>jHome 1.0</h2>
+                      <p>Open-source home<br/> automation</p>
+                    </div>
+                    <div class="nav2">
+                      <h2>Company</h2>
+                      <ul class="addit_menu">
+                        <li><a href="#page_1">Info </a></li>
+                        <li><a href="#page_1">Website</a></li>
+                      </ul>
+                    </div>
+                    <div class="nav3">
+                      <h2>Project</h2>
+                      <ul class="addit_menu">
+                        <li><a href="#page_2">Team</a></li>
+                        <li><a href="#page_9">Official Website</a></li>
+                      </ul>
+                    </div>
+                    <div class="nav4">
+                      <h2>Sensor Panel</h2>
+                      <ul class="addit_menu">
+                        <li><a href="#page_3">Java Home Monitor</a></li>
+                        <li><a href="#page_3">General Settings</a></li>
+                      </ul>
+                    </div>
+                    <div class="nav5">
+                      <h2>Heart Monitor</h2>
+                    </div>
+                    <div class="nav6">
+                      <h2>Coffee Control</h2>
+                    </div>
+                    <div class="nav7">
+                      <h2>Light Control </h2>
+                    </div>
+                    <div class="nav8">
+                      <h2>Privacy</h2>
+                    </div>
+                    <div class="nav9">
+                      <h2>Read more</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li id="page_1">
+              <ui:include src="p6-globalcode.xhtml"/>
+
+            </li>
+            <li id="page_2">
+              <ui:include src="p5-team.xhtml"/>
+            </li>
+            <li id="page_9">
+              <ui:include src="p5-team.xhtml"/>
+            </li>
+            <li id="page_3">
+              <ui:include src="p4-sensor.xhtml"/>
+            </li>
+            <li id="page_4">
+              <ui:include src="p3-robot.xhtml"/>
+            </li>
+            <li id="page_5">
+              <ui:include src="p2-coffee.xhtml"/>
+            </li>
+            <li id="page_6">    
+              <ui:include src="p1-lamp.xhtml"/>
+            </li>
+            <li id="page_7">
+              <div class="box">
+                <img src="images/box.png" alt="" class="box_img"/>
+                <a href="#page_0" class="but_close"><img src="images/close7.png" alt="" class="img"/><img src="images/close_active.png" alt="" class="img_act"/></a>
+                <div class="text">
+                  <h3>Project License</h3>
+                </div>
+              </div>
+            </li>
+            <li id="page_8">
+              <div class="box">
+                <img src="images/box.png" alt="" class="box_img"/>
+                <a href="#page_0" class="but_close"><img src="images/close8.png" alt="" class="img"/><img src="images/close_active.png" alt="" class="img_act"/></a>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <!--content end-->
+      </div>
+      <div class="block"></div>
+    </div>
+    <div class="body1">
+      <div class="main">
+        <!--footer -->
+        <footer>
+          <nav>
+            <ul id="footer_menu">
+              <li class="end"><a href="#page_0">Home</a></li>
+              <li><a href="#page_1">Company</a></li>
+              <li><a href="#page_2">Services</a></li>
+              <li><a href="#page_3">Products</a></li>
+              <li><a href="#page_4">Clients</a></li>
+              <li><a href="#page_5">Support</a></li>
+              <li><a href="#page_6">Contacts</a></li>
+            </ul>
+          </nav>
+          Fusion (c) 2011 |  <a href="#page_7">Privacy policy</a> 
+          <!-- {%FOOTER_LINK} -->
+        </footer>
+        <!--footer end-->
+      </div>
+    </div>
+    <!--coded by koma-->
+
+
+  </body>
+
+</html>

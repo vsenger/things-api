@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <ui:composition template="template.xhtml">
+    <ui:define name="title">
+      jHome - Java EE Home Automation API
+    </ui:define>
+    <ui:define name="dados">
+      <section id="content">
+        <div class="container_16 extra-wrap">
+          <div class="bg">
+            <article class="grid_16">
+              <figure class="img-indent"><img src="images/page2-img1.png" alt="" /></figure>
+              <div class="extra-wrap">
+                <h2>Oracle Innovation Award 2011 Project!</h2>
+                <img src="images/dukeaward-ok.gif" align="right" style="margin: 12px" />
+                <p>
+                  jHome is an open-source platform for home automation based on Java EE 6 
+                  and Glassfish developed by Globalcode.
+                  Using Java EE components like EJB, Servlet, WebService Endpoint and Timer Service you can control wall jackets and many other electronic objects. 
+                  jHome is also a different way to learn Java EE resources: you can inject your coffee maker on EJB's using CDI and much more!
+                  <br/></p>
+                <h3>jHome is not a product, you can do the hardware yourself!</h3>
+                <p>Starting with U$100 you can do the hardware yourself or buy 
+                  kits to install in your house and control your first lamp or anything plugged 
+                  on a wall socket using this funny Home Automation API. 
+                  <br/>
+                </p>
+                <br/>
+                <h2>Open-source Hardware + Java EE + Home Automation</h2>
+                <p>Using open-source hardware, software, Java EE we are
+                  providing complete solution including Java and Arduino source code, 
+                  electronical schematics and different software clients:
+                  <br/>
+                </p>
+                <div style="margin: 5px 5px 25px 25px">
+                  <ul>
+                    <li>1. jHome API to control lamps, RGB leds, scheduling and webservices wall jacket control;</li>
+                    <li>2. Sample JavaFX client application</li>
+                    <li>3. Sample JavaME client application</li>
+                    <li>4. Sample .NET client application</li>
+                    <li>5. Reference Implementation Hardware Schema with Arduino or Oracle Spot;</li>
+                    <li>6. Reference wireless communication with bluetooth</li>
+                    <li>7. Documentation and schematics</li>
+                    <li>8. Support forum</li>
+                    <li>9. Source-code under Apache license</li>             
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <article class="grid_16">
+              <div class="extra-wrap" id="software">
+                <h2>Project Roadmap</h2>
+                <!--<div style="margin: 15px 15px 15px 15px">
+                  <img src="images/sv-coffeemachine-1.jpg" align="right"/>
+                </div>-->
+                <p>
+                  We are providing a complete Web solution using jQuery to
+                  interact with your house electronics.
+                The Web interface allows you to interact with your home objects, 
+                  schedule wall jackets and control RGB colors. 
+                  Many new features are being expected:
+                </p>
+                <div style="margin: 5px 5px 25px 25px">
+                  <ul>
+                    <li>- Twitter JMS API: to command your house using Twitter.</li>
+                    <li>- Sensor JMS API: to feed Glassfish with external sensors</li>
+                    <li>- DSL for Home Automation: easy automation language for non-techincal people</li>
+                    <li>- Cross-platform Mobile Automation Builder: JavaME, iPhone and Android standard client</li>
+                    <li></li>             
+                  </ul>
+                </div>
+
+              </div>
+            </article>
+
+            <article class="grid_16">
+              <div class="extra-wrap" id="hardware">
+                <h2>Hardware</h2>
+                <div style="margin: 15px 15px 25px 25px">
+                  <img src="images/program-mev2.png" align="right" />
+                </div>
+                <p>
+                  The hardware can be implemented using any kind of microcontroller board / device such as Arduino (popular and cheap), Oracle Spot (more robust), PIC, BasicStamp and so on.
+                  <br/>
+                  We are providing two different implementations how-to:                          
+                </p>
+
+                <div style="margin: 5px 5px 25px 25px">
+                  <ul>
+                    <li>1. Arduino based: is easy to find around 
+                      the world but requires some C code.</li>
+                    <li>2. Sun Spot / Oracle spot based: 
+                      nice and robust electronic prototyping platform 
+                      but not available yet all around the world. 
+                      No C code, just Java with Oracle Spot!</li>
+                  </ul>               
+                </div>
+                <p>The amount you are going to spend will depend on
+                  how many things you want to control in your house. 
+                  For the “Hello World” project controlling wall jacket 
+                  you will need:
+                </p>
+                <div style="margin: 20px 20px 20px 20px">
+                  <ul>
+                    <li>
+                      <a href="http://www.sparkfun.com/products/10684">1. Arduino Board - U$ 30,00.</a>
+                    </li>                        
+                    <li>
+                      <a href="http://www.sparkfun.com/products/10684">2. Relay- U$ 19,00.</a>
+                    </li>
+                    <li>
+                      <a href="http://www.sparkfun.com/products/10269">3. Bluetooth - U$ 39,00.
+                      </a>
+                    </li>
+                  </ul>               
+                </div>
+                <p>
+                  To make it more cheaper you can use USB cable instead bluetooth module and connect
+                  the Arduino board direct to the Glassfish Server and if you preffer you can 
+                  use xBee modules which is actually the recommended for larger implementations.
+                </p>
+              </div>
+            </article>
+
+
+            <!--<article class="grid_16">
+              <div class="extra-wrap" id="innovationaward">
+                <h2>Globalcode</h2>
+                <div style="margin: 20px">
+                  <img src="images/globalcode/globalcode.png" align="right"/>
+                </div>
+              </div>                  
+            </article>-->
+            <article class="grid_16">
+              <div class="extra-wrap" id="team">
+                <h2>Support</h2>
+                <p>We are using Google Groups to support and discuss the project development:</p>
+                <div style="margin: 20px">
+                  <a href="http://groups.google.com/group/jhome-globalcode">
+                    Click here to participate!
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article class="grid_16">
+              <div class="extra-wrap" id="team">
+                <h2>Project Team</h2>
+                <p>This project is collection of different knowledge and skills including Java,
+                  Java EE, Electronics, Embbeded Software and much more, without our collaborators
+                  we would never implement a so complete solution for you!<br/><br/></p>
+              </div>
+              <div class="extra-wrap">
+                <figure class="img-indent">
+                  <img src="images/vinicius-small.png" align="left"/>
+                </figure>
+                <h3>Vinicius Senger and Yara Senger - @vsenger @yarasenger</h3>
+                <p>Vinicius and Yara Senger founded Globalcode 10 years ago and are working with passion
+                  to increase the software developers community in Brazil. Vinicius is the technical 
+                  leader and he is working with Java EE the last 10 years and Yara is driving Globalcode
+                  through different communities including Java, Arduino Agile, Test, .NET and more. </p>
+              </div>
+
+              <div class="extra-wrap">
+                <figure class="img-indent">
+                  <img src="images/jllorenzo1-small.jpg" align="left" vspace="10px"/>
+                </figure>
+                <h3>José Luiz Sanches Lorenzo - @jllorenzo</h3>
+                <p>Senior Electronic Engineer working with microcontroller and embedded system the last 20 years. 
+                  José Luiz is author of Arduino and Home Automation Globalcode training.<br/><br/></p>
+                <p>He is instructor and provide electronic engineering consulting for Globalcode and
+                  he is creating a complete zigbee home automation solution working with iPhone App<br/><br/></p>
+              </div>
+              <div class="extra-wrap">
+                <figure class="img-indent">
+                  <img src="images/neto-picture-small.jpg" align="left" vspace="10px"/>
+                </figure>
+                <h3>Neto Marin - @netomarin</h3>
+                <p>Neto is a Senior Mobile Engineer and developed the jHome client for Java ME phones.
+                  Now he is working on Android and iPhone App for jHome 1.0. Coming soon!<br/><br/></p>
+                <p>He is working with Mobile training and consulting the last 10 years having worked for big companies like Nokia.
+                  Neto is also the Principal Mobile Instructor at Globalcode.<br/><br/></p>
+              </div>
+              <div class="extra-wrap">
+                <figure class="img-indent">
+                  <img src="images/porcelli-small.jpg" align="left" vspace="10px"/>
+                </figure>
+                <h3>Alexandre Porcelli - @porcelli</h3>
+                <p>Porcelli is a Senior Java Developer working with software development the last 20 years. 
+                  He is working hard creating DSL including Mule DSL and he is recognized giving
+                  very good talks in different conferences around the world.</p>
+                <p>Porcelli is collaborating with jHome creating a DSL for home
+                  automation making it very easy for beginners to understand and automate their houses.</p>
+                <p>"Java is not verbose, the APIs are..."</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </ui:define>
+  </ui:composition>
+</html>

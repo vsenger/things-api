@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j">
+
+
+  <ui:composition template="template.xhtml">
+    <ui:define name="title">
+      Things Server - Stuff 0.1 beta
+    </ui:define>
+    <ui:define name="dados">
+      <f:view>
+        <section id="content">
+          <div class="container_16 extra-wrap">
+            <div class="bg">
+              <article class="grid_16">
+                <div class="extra-wrap">
+                  <h:form id="catalogo">
+                    <rich:panel header="Setup Device" id="panel1">
+                      <f:facet name="header">
+                        <div style="margin: 6px;height: 60px">
+                          <img hspace="5" align="left" src="setup1_arquivos/programme-device.png" />
+                          <h:outputText style="font-size: 16pt;margin-left: 5px;" value="#{controller.lastDeviceFound.name}"/>                            
+                          <br /><h:outputText style="font-size: 12pt;margin-left: 5px;" value="#{controller.lastDeviceFound.name}"/>                            
+                        </div>                            
+                      </f:facet>
+  
+                      <h:panelGrid columns="2">
+                        <rich:dataTable iterationStatusVar="it" value="#{controller.things.everyThing}" var="component1" rows="15">
+                          <rich:column>
+                            <f:facet name="header">Name</f:facet>
+                            <a4j:commandLink action="#{controller.editComponent(it.index)}" value="${component1.name}" render="componentEditor"/>
+                          </rich:column>
+                          <rich:column>
+                            <f:facet name="header">Type</f:facet>
+                            <h:outputText value="${component1.type}"/>
+                          </rich:column>
+                          <rich:column>
+                            <f:facet name="header">Port</f:facet>
+                            <h:outputText value="#{component1.port}"/>
+                          </rich:column>
+                          <rich:column>
+                            <f:facet name="header">Value</f:facet>
+                            <h:outputText value="#{component1.lastValue}"/>
+                          </rich:column>
+                        </rich:dataTable>
+
+                        <rich:panel style="margin-left: 20px;" id="componentEditor">
+                          <f:facet name="header">
+                            <h:outputText value="Component Editor"/>                            
+                          </f:facet>
+                          <h:panelGrid columns="2" rendered="#{controller.componentToEdit != null}">
+                            <h:outputText value="Name"/>
+                            <h:inputText value="#{controller.componentToEdit.name}"/>
+                            <h:outputText value="Type"/>
+                            <h:inputText value="#{controller.componentToEdit.type}"/>
+                            <h:outputText value="Port"/>
+                            <h:inputText value="#{controller.componentToEdit.port}" />
+                            <h:outputText value="Value"/>
+                            <h:inputText value="#{controller.componentToEdit.lastValue}" name="valorSensor"/>
+                            <h:panelGrid rendered="#{controller.componentToEdit.type eq 'DIGITAL'}">
+                              <a4j:commandLink value="Turn On" action="#{controller.componentToEdit.execute(1)}" />
+                              <a4j:commandLink value="Turn Off" action="#{controller.componentToEdit.execute(0)}"/>
+                            </h:panelGrid>
+                            <h:panelGrid rendered="#{controller.componentToEdit.type eq 'PWM'}">
+                              <a4j:commandLink value="Turn On" action="#{controller.componentToEdit.execute(1)}" />
+                              <a4j:commandLink value="Turn Off" action="#{controller.componentToEdit.execute(0)}"/>
+                            </h:panelGrid>                            
+                            <h:panelGrid rendered="#{controller.componentToEdit.type eq 'ANALOG'}">
+                              <a4j:commandLink value="Update Value" action="#{controller.updateComponent}" render="valorSensor"/>
+                            </h:panelGrid>
+
+                          </h:panelGrid>
+                        </rich:panel>
+                      </h:panelGrid>                      
+                      <h:commandButton action="#{controller.saveNewDevice}" value="Save new device"/>
+                    </rich:panel>
+
+                  </h:form>
+
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </section>
+      </f:view>
+    </ui:define>
+  </ui:composition>
+</html>

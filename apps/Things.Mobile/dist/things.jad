@@ -1,0 +1,9 @@
+MIDlet-1: Things.Mobile,/things-icon.png,org.things.me.app.ThingsMidlet
+MIDlet-Jar-Size: 2015414
+MIDlet-Jar-URL: things.jar
+MIDlet-Name: Things for JavaME
+MIDlet-Permissions: javax.microedition.io.Connector.bluetooth.server
+MIDlet-Vendor: globalcode.com.br
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

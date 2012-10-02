@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JHome</string>
+	<string name="attetion">Attention!</string>
+	<string name="error">Attention!</string>
+	<string name="connection_error">Connection Error!</string>    
+    <string name="devices_title">Devices List</string>
+    <string name="devices_settings_button">Settings</string>
+    <string name="devices_server_ip_label">Server: </string>
+    <string name="devices_loading_devices_db">Loading devices list...</string>
+    <string name="devices_searching_devices">Searching for devices...</string>
+	<string name="devices_no_devices_found_dialog">No devices found!</string>
+	<string name="devices_automatic_scan_dialog">Proceed the automatic scan on the central at </string>
+	<string name="devices_refresh_button">Refresh Devices</string>
+	<string name="devices_change_server_ip_title">New server IP:</string>
+</resources>

@@ -1,0 +1,21 @@
+.dropcap_2 {behavior: url(js/PIE.htc);}
+.cs-buttons a {behavior: url(js/PIE.htc); position:relative;}
+.layouts-nav li a {behavior: url(js/PIE.htc);}
+dl.def-list dt span {behavior: url(js/PIE.htc);}
+#constuction-box {behavior: url(js/PIE.htc);}
+#intro-box {behavior: url(js/PIE.htc);}
+#newsletter-form input[type=submit] {behavior: url(js/PIE.htc);}
+#newsletter-alt-form input {behavior: url(js/PIE.htc);}
+#advanced {behavior: url(js/PIE.htc);}
+#advanced ul li.trigger_adv > span {behavior: url(js/PIE.htc);}
+.button {behavior: url(js/PIE.htc); position:relative;}
+time {behavior: url(js/PIE.htc); position:relative;}
+*+html .container_16 { position:relative;}
+.list-2 {behavior: url(js/PIE.htc);}
+.list-2 li.first a {behavior: url(js/PIE.htc);}
+.list-2 li.last a {behavior: url(js/PIE.htc);}
+*+html .list-2 li.first a { margin-top:-37px;}
+*+html .list-2 li.last a { margin-top:-37px;}
+.tabs li {behavior: url(js/PIE.htc); position:relative;}
+figcaption {behavior: url(js/PIE.htc);}
+#text_slider div { background:none !important;}

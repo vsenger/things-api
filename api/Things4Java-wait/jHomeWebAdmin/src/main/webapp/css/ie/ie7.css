@@ -1,0 +1,8 @@
+/* IE7 specific styles */
+#constuction-box {display:inline;}
+#intro-box {display:inline;}
+
+.tabs code { overflow:visible !important;}
+
+
+#contact-form { height:580px;}

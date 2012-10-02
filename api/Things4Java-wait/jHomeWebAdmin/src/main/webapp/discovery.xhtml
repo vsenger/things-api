@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+
+  <ui:composition template="template-app.xhtml">
+    <ui:define name="title">
+      jHome - Java EE Home Automation API
+    </ui:define>
+    <ui:define name="dados">
+      <f:view>
+        <section id="content">
+          <div class="container_16 extra-wrap">
+            <div class="bg">
+              <article class="grid_16">
+                <div class="extra-wrap">
+                  <h2>Discovery >> Setup >> Control >> Schedule</h2>
+                  <h:form id="catalogo">
+
+                    <rich:panel header="Device Type" id="panel1">
+                      <h:selectOneRadio  title="Device Type" value="#{adminController.discoveryDeviceType}">
+                        <a4j:ajax event="change" render="panel1"/>                        
+                        <f:selectItem itemValue="USB" itemLabel="Serial (USB / Bluetooth / xBee)"/>
+                        <f:selectItem itemValue="ETH" itemLabel="Ethernet"/>
+                      </h:selectOneRadio>
+                      <h:panelGrid columns="2" bodyrows="4" style="height: 80px">
+                        <h:outputText id="ipText" 
+                                      value="IP:" 
+                                      rendered="#{adminController.discoveryDeviceType eq 'ETH'}"/>
+                        <h:inputText id="ipValue" 
+                                     value="#{adminController.discoveryIP}" 
+                                     title="IP" 
+                                     rendered="#{adminController.discoveryDeviceType eq 'ETH'}"/>
+                        <h:commandButton action="#{adminController.discoveryNetwork}"
+                                         value="Discovery"
+                                         rendered="#{adminController.discoveryDeviceType eq 'ETH'}"/>
+
+
+                        <h:outputText id="serialText" value="Serial Port:" rendered="#{adminController.discoveryDeviceType eq 'USB'}"/>
+                        <h:inputText id="serialValue" value="#{adminController.discoverySerial}" title="Serial Device" rendered="#{adminController.discoveryDeviceType eq 'USB'}"/>
+                        <h:commandButton action="#{adminController.discoverySerial}"
+                                         value="DiscoverySerial"
+                                         rendered="#{adminController.discoveryDeviceType eq 'USB'}"/>
+                      </h:panelGrid>
+
+                    </rich:panel>
+                  </h:form>
+
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </section>
+      </f:view>
+    </ui:define>
+  </ui:composition>
+</html>

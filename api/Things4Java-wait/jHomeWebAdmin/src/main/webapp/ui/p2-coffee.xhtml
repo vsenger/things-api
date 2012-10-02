@@ -1,0 +1,39 @@
+<div class="box">
+  <img src="images/box.png" alt="" class="box_img"/>
+  <a href="#page_0" class="but_close"><img src="images/close5.png" alt="" class="img"/><img src="images/close_active.png" alt="" class="img_act"/></a>
+  <div class="text">
+    <h3>Coffee Maker Scheduler</h3>
+    <figure class="left"><img src="images/icons/coffee2.png" alt=""/></figure>
+    <form id="coffeescheduler" action="Agendador" method="GET">
+      <fieldset>
+        <div class="col1">
+          <div class="rowElem">
+            <div class="bg">
+              When? 
+              <input  type="text"  name="when" id="when"  value="Starting time"  onblur="if(this.value=='') this.value='Starting time'" onFocus="if(this.value =='Starting time' ) this.value=''"/>
+            </div>
+          </div>
+          <div class="rowElem">
+            <div class="bg">
+              How long? <input  type="text" name="howLong" id="howLong" value="Turn off time"  onblur="if(this.value=='') this.value='Turn off time'" onFocus="if(this.value =='Turn off time' ) this.value=''" />
+            </div>
+          </div>
+          <input type="hidden" name="relayName" value="relay2"/>
+          <!--<div class="rowElem">
+            <div class="option">
+              Seconds<input type="radio" name="tipoValor" value="1" checked/>
+              Minutes<input type="radio" name="tipoValor" value="2"/> 
+            </div>
+
+          </div>-->
+          <div style="padding: 40px">
+            <input type="submit" name="submitCoffee" style="width: 120px;height: 30px;"
+                   class="button" id="button" value="Schedule" />   
+          </div>                        
+        </div>
+      </fieldset>
+    </form>
+    <div style="padding: 40px" id="feedbackdiv">
+    </div>
+  </div>
+</div>
