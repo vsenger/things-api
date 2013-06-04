@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /api/Things4Java/jHomeWebAdmin/target/
 /api/Things4Java/Things.Prototipo/target/
 /apps/jHomeAutomation/target/
@@ -8,3 +9,11 @@
 /api/Things4Java/Things.Gateway.REST/dist/
 /apps/DNTV/target/
 /api/Things4Java/Things.Robot/target/
+=======
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> 3ed78dd6b24a4c4830312346fc577e8b2acc3fad
