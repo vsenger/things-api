@@ -142,7 +142,7 @@ public class Robot {
     public static int sensorDistancia(int i) {
         int r1 = -1;
         try {
-            robot.send("sd1");
+            robot.send("sd" + i);
 
             String r = robot.receive();
             r1 = Integer.parseInt(r.substring(3, r.length() - 2));
