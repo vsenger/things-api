@@ -1,0 +1,26 @@
+
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block; }
+mark, rp, rt, ruby, summary, time{ display: inline }
+
+
+.left { float:left;}
+.right { float:right;}
+.wrapper {width:100%; overflow:hidden;}
+
+/* Global properties ======================================================== */
+
+
+body{ background: url(../images/bg.gif) top center repeat; border:0; font:13px Arial, Helvetica, sans-serif; color:#5e5e5e; line-height:22px; overflow:hidden}
+
+
+/* Global Structure ============================================================= */
+
+.main {	margin: 0 auto;	width: 940px; position:relative; z-index:1}
+
+.spinner{ background: url(../images/bg.gif) top center repeat; position: fixed; top:0; left:0; width:100%; height:100%; z-index:99;}
+.spinner > div{ position:absolute; top:0; left:0; width:100%; height:100%; background:url(../images/bg_img.jpg) top center no-repeat;}
+
+.body1{ background:url(../images/footer_bg.png) repeat}
+.wrapper {width:100%; overflow:hidden;}
+
+#logo{ display:block; background:url(../images/globalcode.png) 0 0 no-repeat; width:256px; height:83px; text-indent:-9999px;}

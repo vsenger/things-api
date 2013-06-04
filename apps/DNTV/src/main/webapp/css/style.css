@@ -1,0 +1,221 @@
+
+/* Getting the new tags to behave */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block; }
+mark, rp, rt, ruby, summary, time{ display: inline }
+
+/* Left & Right alignment */
+
+.left { float:left;}
+.right { float:right;}
+.wrapper {width:100%; overflow:hidden;}
+
+/* Global properties ======================================================== */
+
+
+body{ background: url(../images/bg.gif) top center repeat; border:0; font:13px Arial, Helvetica, sans-serif; color:#5e5e5e; line-height:22px; overflow:hidden}
+
+.css3{border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; box-shadow: 0 0 4px rgba(0, 0, 0, .4); -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .4); -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .4); position: relative;}
+
+/* Global Structure ============================================================= */
+
+.main {	margin: 0 auto;	width: 940px; position:relative; z-index:0}
+
+.spinner{ background: url(../images/bg.gif) top center repeat; position: fixed; top:0; left:0; width:100%; height:100%; z-index:99;}
+.spinner > div{ position:absolute; top:0; left:0; width:100%; height:100%; background:url(../images/bg_img.jpg) top center no-repeat;}
+.spinner > div > div{ position:absolute; top:0; left:0; width:100%; height:100%; background:url(../images/ajax-loader.gif) 50% 50% no-repeat}
+
+.body1{ background:url(../images/footer_bg.png) repeat}
+
+.block {height:52px;}
+.extra {min-height:100%; height:auto !important; height:100%; margin: 0 auto -52px; background:url(../images/bg_img.jpg) top center no-repeat;}
+body, html {height:100%;}
+
+/* ============================= main layout ====================== */
+
+a{ color:#5e5e5e; text-decoration: underline; outline:none}
+a:hover{ text-decoration: none}
+h1{ padding:10px 0 0 0; float: left;}
+h2{ font:24px Arial, Helvetica, sans-serif; color:#fff; line-height:1.2em; letter-spacing:-1px; padding-bottom:6px;}
+h3{ font:24px Arial, Helvetica, sans-serif; color:#fff; line-height:1.2em; letter-spacing:-1px; padding:26px 0 0px 0; text-align:center; min-height:87px;}
+h3 span{ display:block; margin-top:-5px;}
+p{ padding-bottom:22px;}
+
+/* ============================= header ====================== */
+header{ height:119px; width:100%; overflow:hidden}
+
+#logo{ display:block; background:url(../images/globalcode.png) 0 0 no-repeat; width:256px; height:83px; text-indent:-9999px;}
+
+.login{ float:right; padding:95px 2px 0 0; color:#fff; text-align:right}
+.login a{ color:#fff; text-decoration:none}
+.login a:hover{ text-decoration:underline}
+
+#icons{ float:right; padding:2px 0 0 21px}
+#icons li{ float:left; padding-left:8px;}
+/* Tooltips */
+.aToolTip {	border:1px solid #fff; background:#000; color:#fff;	margin:0; padding:0px 5px; font-size:11px;	}
+.aToolTip .aToolTipContent { position:relative;	margin:0; padding:0; }
+
+.menu_box{ width:252px; height:252px; position: absolute; top:-48px; left:-44px}
+.menu_box .images{ position:absolute; top:0; left:0; width:100%; height:100%;}
+.images span{ display:block; position:absolute; width:100%; height:100%}
+.images .nav1{ background:url(../images/nav1_hover.png) 0 0 no-repeat}
+.images .nav2{ background:url(../images/nav2_hover.png) 0 0 no-repeat}
+.images .nav3{ background:url(../images/nav3_hover.png) 0 0 no-repeat}
+.images .nav4{ background:url(../images/nav4_hover.png) 0 0 no-repeat}
+.images .nav5{ background:url(../images/nav5_hover.png) 0 0 no-repeat}
+.images .nav6{ background:url(../images/nav6_hover.png) 0 0 no-repeat}
+.images .nav7{ background:url(../images/nav7_hover.png) 0 0 no-repeat}
+.images .nav8{ background:url(../images/nav8.png) 0 0 no-repeat}
+.images .nav9{ background:url(../images/nav1_hover.png) 0 0 no-repeat}
+
+#menu {display:block; width:252px; height:252px;}
+#menu > li {}
+#menu > li > a{ position:relative; display:block; width:168px; height:168px;}
+#menu > li > a img{ position:absolute; top:0; left:0; width:100%; height:100%;}
+#menu > li > a:hover{ }
+
+ul.reset li {
+position:absolute;
+}
+
+.inner{ width:252px; height:252px; position:relative; margin-top:255px; margin-left:387px;}
+.trigger{ width:0px !important; height:0px !important; font-size:0; line-height:0}
+
+.menu{ z-index:1; position:relative}
+.menu_box{ z-index:99}
+
+.tittles{ text-align:center; line-height:18px; position:relative;}
+.tittles > div{ width:150px; padding-left:51px; position: absolute; top:0; left:0; padding-top:88px;}
+
+.tittles .nav2{ padding-top:65px; text-align:left; padding-left:78px;}
+.tittles .nav2:hover{}
+.tittles .nav3{ padding-top:65px; text-align:left; padding-left:78px;}
+.tittles .nav4{ padding-top:65px; text-align:left; padding-left:78px;}
+.tittles .nav4 .addit_menu{ width:133px}
+.tittles .nav5, .tittles .nav6, .tittles .nav7, .tittles .nav8, .tittles .nav9{padding-top:112px;}
+
+.addit_menu{ width:120px; margin-left:-10px}
+.addit_menu > li{ margin-top:-1px; background:url(../images/menu_line.gif) 10px bottom no-repeat; height:25px;position:relative;}
+.addit_menu > li > a{ line-height:25px; display:block; text-decoration:none;border-radius: 14px; -moz-border-radius: 14px; -webkit-border-radius: 14px; padding:0 10px; zoom:1; position:relative}
+.addit_menu > li > a > span{ display:block;}
+.addit_menu > .end{ background:none}
+.addit_menu > .with_ul > a{border-radius:14px 0 0 14px; -moz-border-radius:14px 0 0 14px; -webkit-border-radius:14px 0 0 14px;}
+.addit_menu > .with_ul > a > span{ background:url(../images/menu_arrow.gif) right 9px no-repeat}
+.addit_menu > li:hover> a{ background:#0d0c0c}
+
+.addit_menu .ul_1, .addit_menu .ul_2{ position: absolute;top:0; left:114px;width:147px; padding-right:1px;}
+.addit_menu .ul_1 > li, .addit_menu .ul_2 > li{ padding-bottom:1px; position:relative; background:#0d0c0c; padding:0 12px; zoom:1}
+.addit_menu .ul_1 > li > a, .addit_menu .ul_2 > li > a{ text-decoration:none; display:block; line-height:26px; background:#0d0c0c;}
+.addit_menu .ul_1 > li > a span, .addit_menu .ul_2 > li > a span{ display:block;}
+.addit_menu .ul_1 > li > a span span, .addit_menu .ul_2 > li > a span span{ padding: 0 10px;}
+.addit_menu .ul_1 > li:hover > a, .addit_menu .ul_2 > li:hover > a{ color:#fff; background:#2c2c2c}
+.addit_menu .ul_1 > li:hover > a > span, .addit_menu .ul_2 > li:hover > a > span{ background:url(../images/menu_bg_left.gif) 0 0 no-repeat}
+.addit_menu .ul_1 > li:hover > a > span span, .addit_menu .ul_2 > li:hover > a > span span{ background: url(../images/menu_bg_right.gif) top right no-repeat}
+.addit_menu .ul_1 > li:hover, .addit_menu .ul_2 > li:hover{}
+.addit_menu .ul_1 > .top, .addit_menu .ul_2 > .top{ background:url(../images/menu_bg_top.png) 0 0 no-repeat; width:148px; height:17px; font-size:0; line-height:0;}
+.addit_menu .ul_1 > .bot, .addit_menu .ul_2 > .bot{ background:url(../images/bg_menu_bot.png) 0 0 no-repeat; width:148px; height:17px; font-size:0; line-height:0}
+
+.addit_menu .ul_2{ left:148px; top:-17px;}
+.addit_menu .ul_2 > .top{ background:url(../images/menu_bg_top2.png) 0 0 no-repeat;}
+
+.addit_menu > ul{ display:none}
+* + html .addit_menu .ul_1{ left:400px;}
+
+/* ============================= content ====================== */
+
+#content, #content > ul{ height:729px; position:relative; width:100%; overflow:hidden}
+
+#content > ul > li{ position:absolute; width:673px; height:673px; right:0; top:50%; margin-top:-345px; visibility:hidden}
+#page_0{ height:630px; width:100%; top:50%; margin-top:-365px; right:auto; left:0; visibility:visible}
+
+.box{ position:relative; top:0; left:0; width:673px; height:673px;}
+.box_img{ position:absolute; width:0; height:0; top:337px; left:337px; z-index:1}
+.text{ position:relative; padding:90px; z-index:2}
+
+.but_close{ position:absolute; width:57px; height:57px; display:block; z-index:2; top:90px; right:63px; z-index:3}
+.but_close img{ position:absolute; width:100%; height:100%; z-index:1; top:0; left:0}
+.but_close .img{ z-index:2}
+
+.pad_bot1{ padding-bottom:22px;}
+.pad_bot2{ padding-bottom:12px;}
+.pad_left1{ padding-left:31px;}
+.pad1{ padding-top:7px; padding-bottom:13px;}
+.marg_right1{ margin-right:26px;}
+
+.link1{ padding-right:11px; background:url(../images/marker_2.gif) right 9px no-repeat; display:inline-block; color:#fff}
+
+.font1{ font-size:20px; color:#5f5f5f; line-height:1.2em; font-style:italic; text-align:center; display:block; padding:5px 0 15px 0}
+.font2{ font-size:15px;}
+
+
+/*================ScrollPane==========================*/
+.scroll-pane, .scroll{ height:326px; padding-right:18px; overflow:auto; position:relative; z-index:99;}
+.jScrollPaneContainer {position: relative;overflow: hidden;z-index: 1; width:100% !important}
+.jScrollPaneTrack {	position: absolute;	cursor: pointer;right: 0px;top: 0;height: 100%; background: url(../images/scroll_track.gif) repeat-y}
+.jScrollPaneTrack span{ display:block; background:url(../images/scroll_track_top.gif) 0 0 no-repeat; position:absolute; top:0; left:0; width:100%; height:100%}
+.jScrollPaneTrack span span{ background:url(../images/scroll_track_bot.gif) bottom no-repeat}
+.jScrollPaneDrag {position: absolute;background: url(../images/scroll_drag.png) no-repeat;cursor: pointer;overflow: hidden;}
+.jScrollPaneDragTop {position: absolute;top: 0;left: 0;overflow: hidden;}
+.jScrollPaneDragBottom {position: absolute;bottom: 0;left: 0;overflow: hidden;}
+
+
+.list1{ padding-left:46px;}
+.list1 li{ line-height:30px;}
+.list1 li a{ padding-left:37px; background:url(../images/marker_1.png) 0 5px no-repeat; display:inline-block; color:#fff;}
+#page_1 .list1 li a:hover{ color:#f03d26; background-position:0 -25px}
+
+
+.color1{ color:#fff}
+
+.under{ background:url(../images/line_hor1.gif) left bottom repeat-x; padding-bottom:18px; margin-bottom:23px}
+
+.address{ padding-bottom:6px;}
+.address .right{ margin-right:175px;}
+.address a{ text-decoration:none}
+.address a:hover{ color:#fff}
+
+/* Lightbox image */
+.lightbox-image {position:relative;overflow:hidden;	display:block; background:#fff}
+.lightbox-image img {position:relative;z-index:2;}
+.lightbox-image span {display:block;position:absolute;left:0;top:0;width:100%;height:100%;background: url(../images/magnify.png) no-repeat 50% 50%;z-index:1;}
+.pp_nav{ padding-bottom:0; }
+.pp_description{ padding-bottom:0;}
+.pp_details{ height:0 !important; margin:0 !important}
+.pp_close{ position:absolute; right:-15px; top:-35px; z-index:99}
+.pp_content{}
+
+#map{ display:none;}
+
+
+/* ============================= footer ====================== */
+
+footer { height:33px; color:#fff; padding-top:19px;}
+footer a{ color:#fff; text-decoration:none}
+footer a:hover{ color:#5d5d5d}
+
+#footer_menu{ float:right;}
+#footer_menu li{ float:left; padding-left:10px; margin-left:9px; background:url(../images/footer_menu_line.gif) 0 6px no-repeat}
+#footer_menu .end{ background:none}
+#footer_menu li a{ color:#5d5d5d}
+#footer_menu li a:hover, #footer_menu .active a{ color:#fff}
+
+/* ============================= forms ============================= */
+
+#contact_form { padding-top:18px}
+#contact_form a{ float:right; color:#fff}
+#back{ float:right;}
+#contact-form input {  width:197px; background: none; padding:10px 12px;  float:left; font:13px Arial, Helvetica, sans-serif; color:#5e5e5e; height:15px;}
+#contact-form textarea { overflow: auto; width:242px; background: none; padding:10px 12px;  float:left; font:13px Arial, Helvetica, sans-serif; color:#5e5e5e; height:93px; margin:0}
+#contact-form fieldset {border:none; width:100%; overflow:hidden;}
+#contact-form .rowElem {display:block;position:relative; width:100%; overflow:hidden; min-height:39px; background:url(../images/bg_input.png) 0 0 no-repeat}
+#contact-form .textarea-box { width:100%;display:inline-block;position:relative; min-height:117px; overflow:hidden; padding-bottom:9px; background:url(../images/bg_textarea.png) 0 0 no-repeat}
+#contact-form label {padding:0;display: none;	font-size:10px;	position: relative;font-size:11px; left:10px;top:1px; margin-bottom:0px}
+#contact-form .error {color:#fff;}
+#contact-form fieldset {border:none;}
+
+div#contact_form .download-box p{
+	padding:16px 30px;background:#212121;border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; position:relative
+}
+#contact-form .bg{ float:left;background:#212121;border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; position: relative;}
+#contact-form .option{float: left;display: inline-block}
+#button{}

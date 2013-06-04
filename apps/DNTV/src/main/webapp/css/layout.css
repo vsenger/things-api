@@ -1,0 +1,17 @@
+
+.col1, .col2, .col3, .cols { float:left;}
+
+.cols{ width:354px; float:left;}
+
+/*======= index.html =======*/
+/*======= index-1.html =======*/
+/*======= index-2.html =======*/
+/*======= index-3.html =======*/
+#page_4 .cols{ width:135px;}
+/*======= index-4.html =======*/
+#page_5 figure{ text-align:center; padding-top:7px; padding-right:6px;}
+#page_5 .pad_left1{ padding-left:51px}
+/*======= index-5.html =======*/
+#page_6 .col1{ width:221px;}
+#page_6 .col2{ width:266px; padding-left:4px}
+/*======= index-6.html =======*/
