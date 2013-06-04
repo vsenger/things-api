@@ -1,0 +1,342 @@
+header, footer, section, aside, nav, article {
+  display: block;
+}
+img {
+  outline: none;
+  border: none;
+}
+
+a {
+  color: #3d3c3c;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #000;
+}
+body {
+  margin: 0 auto;
+  padding: 5px;
+  width: 865px;
+  font: 13px/22px Helvetica, Arial, sans-serif;
+  background: #EAEBD8;
+}
+.top-eletronlivre {
+  height: 105px;  
+   display: table-cell; 
+   vertical-align: middle;
+   width: 737px;
+}
+.top-globalcode {
+  display: table-cell;  
+   vertical-align: middle;
+  
+}
+
+.top-menu-idioma {
+  text-align: right;
+}
+.conteudo {
+
+  display: block;
+  margin-top: 5px;
+  width: 853px;
+  padding: 5px;
+  background-color: white;
+  border: 2px solid #d7d7d7;
+
+}
+.produtos-menu {
+  vertical-align: top;
+  display: table-cell;
+  width: 220px;
+  height: 100%;
+  background-color: WHITE;
+  border-right-width: 1px;
+  border-right-color: BLACK;
+  border-right-style: solid;
+
+}
+.colunas {
+  width: 100%;
+}
+.conteudo-colunas {
+  vertical-align: top;
+
+  display: table-cell;
+  height: 100%;
+  width: 280px;
+  padding: 10px;
+}
+.conteudo-linhas {
+  vertical-align: top;
+  padding: 8px;
+  display: inline-block;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.conteudo-linhas a {
+  color: black;
+  font-size: 16px;
+}
+.conteudo-linhas a img {
+  border-style: none;
+}
+
+.conteudo-linhas h3 {
+  font-size: 21px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.espacador {
+
+  height: 8px;
+}
+
+.produtos-menu ul {
+  background: WHITE;
+  margin: 0px;
+  padding: 4px;
+  font-weight: bold;
+  list-style: none;
+  font-size:14px;
+}
+.produtos-menu ul li {
+  background-color: WHITE;
+  font-weight: normal;
+  margin-left: 15px;
+  font-size:12px;
+}
+.produtos-lista {
+  vertical-align: top;
+  padding: 10px;
+  display: table-cell;
+  position: relative;
+  width: 665px;
+  height: 100%;
+  background-color: WHITE;
+  z-index: 10;
+}
+
+.produtos-item {
+  vertical-align: top;
+  border-bottom-color: #d7d7d7;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+.produtos-item titulo {
+  vertical-align: top;
+  font-size: 14px;
+  font-weight: bold;
+}
+.produtos-item preco {
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  left:550px;
+
+}
+#painel {
+  height: 273px;
+}
+.slider {
+  position: absolute;
+  top: 390px;
+}
+.painelInferiorModelo2{
+  background-image: url('../images/fundo-2.png'); 
+  background-repeat: repeat-x repeat-y;
+
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+
+}
+.slider div {
+  height: 200px;
+  width: 18px;
+  height: 16px;
+  display: table-cell;
+  border-style: solid;
+  background: #cccccc;
+  border-color: #F0F0F0;
+  font-size: 10px;
+  border-width: 3px;
+  text-align: center;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+.slider div sel {
+  font-size: 12px;
+  font-weight: bold;
+}
+.coluna-blog {
+  display: table-cell;
+  width: 290px;
+  padding-bottom: 10px;
+}
+
+
+
+
+.coluna-agenda {
+  display: table-cell;
+  width: 290px;
+
+}
+.coluna-agenda p {
+  font-size: 16px;
+  font-weight: bold;
+  color:BLACK;
+  padding:5px;
+}
+
+.content-active {
+  display: block;
+  margin-left: 3px;
+  margin-top: 5px;
+  width: 854px;
+  padding: 0px; 
+  background-color: white;
+  border: 2px solid #d7d7d7;
+
+}
+.content-inactive {
+  display: none;
+}
+
+.titulo {
+  font-size: 16px;
+  font-style: oblique;
+  color: #000;
+}
+.aside {
+  display: block;
+  float: right;
+}
+
+.toolbar {
+  display: table;
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  border: 2px solid #d7d7d7;
+  -moz-border-radius: 11px;
+  -webkit-border-radius: 11px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.toolbar ul {
+  width: 100%;
+  margin-left: 30px;
+}
+
+.toolbar ul li{
+  list-style: none;
+  float: left;
+}
+
+.toolbar img {
+  border: 0px;
+}
+
+
+/*
+ * MENU JS
+*/
+
+
+#fundo {
+  position: relative;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background: url("../images/nav_background.png");
+
+}
+
+#sddm
+{	position: relative;
+  margin: 1px;
+  padding: 0;
+  z-index:100;
+  width: 875px;
+}
+
+#sddm li
+{	margin: 0;
+  padding: 0;
+  list-style: none;
+  float: left;
+  z-index: 100;
+}
+
+#sddm li a
+{	display: block;
+  margin: 1px 1px 0 0;
+  padding: 4px 10px;
+  width: 100px;
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+  text-decoration: none}
+
+#sddm li a:hover
+{	background: #3d3c3c}
+
+#sddm div
+{	position: absolute;
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  background: #EAEBD8;
+  border: 1px solid #000}
+
+#sddm div a
+{	position: relative;
+  display: block;
+  margin: 0;
+  padding: 5px 10px;
+  width: auto;
+  white-space: nowrap;
+  text-align: left;
+  text-decoration: none;
+  background: #EAEBD8;
+  color: #3d3c3c;
+  font-size:  12px }
+
+#sddm div a:hover
+{	background:#3d3c3c;
+  color: #FFF
+}
+
+
+/* Z-index of #mask must lower than #boxes .window */
+#mask {
+  position:absolute;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+
+#boxes .window {
+  position:absolute;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+
+
+/* Customize your modal window here, you can add background image too */
+#boxes #dialog {
+  width:375px;
+  height:203px;
+}
+
+.pagamento {
+ display: block;
+}

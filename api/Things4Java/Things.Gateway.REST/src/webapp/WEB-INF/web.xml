@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2012 Oracle and/or its affiliates.
+    All rights reserved. Use is subject to license terms.
+
+-->
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaeehttp://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+   <servlet>
+       <servlet-name>org.things.gateway.rest.ThingsApp</servlet-name>
+   </servlet>
+</web-app>
