@@ -32,6 +32,7 @@ public class Things {
     try {
       Thread.sleep(milis);
     } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
     }
   }
   protected Collection<Device> devices;
@@ -43,7 +44,7 @@ public class Things {
     for (Device device : devices) {
       t += device.getThings().size();
     }
-    String retornao = "jhome-server|" + t + "|";
+    String retornao = "things-server|" + t + "|";
     for (Device device : devices) {
 
       for (String c : device.getThings().keySet()) {
@@ -84,6 +85,12 @@ public class Things {
         found.setLastValue(r);
       } catch (Exception ex) {
         Logger.getLogger(Things.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+          found.getDevice().close();
+        } catch (IOException ex1) {
+        }
+        devices.remove(found.getDevice());
+        devicesTable.remove(found.getDevice().getID());
       }
     } else {
       Logger.getLogger(Things.class.getName()).log(Level.INFO, "Component " + thing + " not found!");
@@ -107,6 +114,43 @@ public class Things {
     } else {
       Logger.getLogger(Things.class.getName()).log(Level.INFO, "Component " + thing + " not found!");
     }
+    return r;
+  }
+
+  public synchronized String execute(String deviceName, String thing, String args) {
+    timeControl();
+    if (devices == null) {
+      devices = new ArrayList<Device>();
+      devicesTable = new HashMap<String, Device>();
+    }    
+    Device device = null;
+    if (!devicesTable.containsKey(deviceName)) {
+      device =
+              new SerialDevice(deviceName, 115200);
+      try {
+        device.open();
+        this.devices.add(device);
+        this.devicesTable.put(deviceName, device);
+
+      } catch (IOException ex) {
+        Logger.getLogger(Things.class.getName()).log(Level.SEVERE, null, ex);
+        return null;
+      }
+    }else {
+      device = devicesTable.get(deviceName);
+    }
+
+    String r = null;
+    try {
+      device.send(thing + "?" + args);
+      if (device instanceof SerialDevice) {
+        Things.delay(40);//era 30
+      }
+      r = device.receive();
+    } catch (Exception ex) {
+      Logger.getLogger(Things.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    //Logger.getLogger(Things.class.getName()).log(Level.INFO, "Component " + thing + " not found!");
     return r;
   }
 
@@ -192,4 +236,8 @@ public class Things {
   /*public Collection<Device> discoveryBluetooth(String args) throws Exception {
    return this.discoverySerial(args);
    }*/
+
+  public Thing bluetooth(String device) {
+    return null;
+  }
 }

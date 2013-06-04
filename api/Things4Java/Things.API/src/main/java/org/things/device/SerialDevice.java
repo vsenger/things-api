@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.IIOException;
 import org.things.Thing;
 import org.things.Things;
 
@@ -24,7 +23,7 @@ import org.things.Things;
  */
 public class SerialDevice implements Device {
 
-  private static final int DEFAULT_BAUDRATE = 115200;
+  private static final int DEFAULT_BAUDRATE = 19200;
   final static int DISCOVERY_RETRY = 3;
   CommPortIdentifier portId;
   String portName;
@@ -87,12 +86,12 @@ public class SerialDevice implements Device {
                 CommPortIdentifier.getPortIdentifier(portName);
       }
       if(portId==null) {
-        throw new IIOException("Invalid port " + portName);
+        throw new IOException("Invalid port " + portName);
       }
       serialPort =
               (SerialPort) portId.open(portId.getName(), baudRate);
       if(portId==null) {
-        throw new IIOException("Invalid port " + portName);
+        throw new IOException("Invalid port " + portName);
       }
 
       serialPort.setSerialPortParams(baudRate,
@@ -156,7 +155,23 @@ public class SerialDevice implements Device {
       }
     }
   }
+  public void send(char s) throws IOException {
 
+    if (outputStream == null) {
+      Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE,
+              "This device ({0}) is not working because IO objects are null. "
+              + "You should restart the device!", this.getName());
+    } else {
+      outputStream.write(s);
+      outputStream.flush();
+
+    }
+  }
+
+  
+  
+  
+  
   @Override
   public void send(String s) throws IOException {
 
@@ -181,9 +196,10 @@ public class SerialDevice implements Device {
       Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE, msg);
       throw new IOException(msg);
     } else {
+        
       int available = inputStream.available();
       if (available == 0) {
-        inputStream.close();
+        //inputStream.close();
         return null;
       } else {
         byte chunk[] = new byte[available];
@@ -194,7 +210,31 @@ public class SerialDevice implements Device {
       }
     }
   }
+  public String receive(long timeout) throws IOException {
 
+    if (inputStream == null) {
+      String msg = "This device (" + this.getName()
+              + ") is not working because IO objects are null. "
+              + "You should restart the device!";
+      Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE, msg);
+      throw new IOException(msg);
+    } else {
+      long time = System.currentTimeMillis();
+      while(inputStream.available()==0 && System.currentTimeMillis() - time<timeout);
+      
+      int available = inputStream.available();
+      if (available == 0) {
+        //inputStream.close();
+        return null;
+      } else {
+        byte chunk[] = new byte[available];
+        inputStream.read(chunk, 0, available);
+        String retorno = new String(chunk);
+        inputStream.close();
+        return retorno;
+      }
+    }
+  }
   @Override
   public String getName() {
     return name;

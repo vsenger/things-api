@@ -44,7 +44,7 @@ public class ServoForm extends ThingsForm {
           }
           setProgress(actualAngle);
           try {
-            sendMessage("" + actualAngle);
+            sendCommand("" + actualAngle);
           } catch (ThingException ex) {
             ex.printStackTrace();
           }
@@ -56,7 +56,7 @@ public class ServoForm extends ThingsForm {
           }
           this.setProgress(actualAngle);
           try {
-            sendMessage("" + actualAngle);
+            sendCommand("" + actualAngle);
           } catch (ThingException ex) {
             ex.printStackTrace();
           }

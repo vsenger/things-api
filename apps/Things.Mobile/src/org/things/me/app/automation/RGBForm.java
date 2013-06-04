@@ -52,7 +52,7 @@ public class RGBForm extends ThingsForm {
           }
           setProgress(actualValue);
           try {
-            sendMessage(color + "?" + actualValue);
+            sendCommand(color + "?" + actualValue);
           } catch (ThingException ex) {
             ex.printStackTrace();
           }
@@ -64,7 +64,7 @@ public class RGBForm extends ThingsForm {
           }
           this.setProgress(actualValue);
           try {
-            sendMessage(color + "?" + actualValue);
+            sendCommand(color + "?" + actualValue);
           } catch (ThingException ex) {
             ex.printStackTrace();
           }

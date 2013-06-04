@@ -31,7 +31,7 @@ public class TemperatureSensorForm extends ThingsForm {
       public void actionPerformed(ActionEvent ae) {
         String rcvd="";
         try {
-          rcvd = sendAndReceiveMessage("temp");
+          rcvd = sendReceiveCommand("temp");
         } catch (ThingException ex) {
           ex.printStackTrace();
         }

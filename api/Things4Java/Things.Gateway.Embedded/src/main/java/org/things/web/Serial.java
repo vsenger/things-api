@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author vsenger
  */
-@WebServlet(name = "Emulator", urlPatterns = {"/ThingsEmulator/*"})
-public class Emulator extends HttpServlet {
+@WebServlet(name = "Serial", urlPatterns = {"/Serial/*"})
+public class Serial extends HttpServlet {
 
   static Collection<Component> components;
 
@@ -40,22 +40,7 @@ public class Emulator extends HttpServlet {
 
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    PrintWriter out = response.getWriter();
-    try {
-
-      String component =
-              request.getPathInfo() != null ? request.getPathInfo().substring(
-              1, request.getPathInfo().length()) : null;
-      String param = request.getQueryString();
-      if (component == null || component.equals("") || component.equals("discovery")) {
-        discovery(out);
-      } else {
-        execute(component, param, out);
-
-      }
-    } finally {
-      out.close();
-    }
+    
   }
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

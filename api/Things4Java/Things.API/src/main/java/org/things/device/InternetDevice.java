@@ -89,7 +89,9 @@ public class InternetDevice implements Device {
     byte[] responseBody = null;
     try {
       HttpClient client = new HttpClient();
+      client.setConnectionTimeout(200);
       HttpMethod method = new GetMethod(url);
+     
       client.executeMethod(method);
       responseBody = method.getResponseBody();
     } catch (Exception e) {

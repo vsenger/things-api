@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.IIOException;
 import org.things.Thing;
 import org.things.Things;
 
@@ -22,7 +21,7 @@ import org.things.Things;
  *
  * @author vsenger
  */
-public class SerialDevice implements Device {
+public class ZigBeeDevice implements Device {
 
   private static final int DEFAULT_BAUDRATE = 115200;
   final static int DISCOVERY_RETRY = 3;
@@ -39,14 +38,14 @@ public class SerialDevice implements Device {
   Map<String, Thing> things;
   Collection<Thing> thingsList;
 
-  public SerialDevice(CommPortIdentifier portId, int baudRate) {
+  public ZigBeeDevice(CommPortIdentifier portId, int baudRate) {
     this.portId = portId;
     this.baudRate = baudRate;
     things = new Hashtable<String, Thing>();
     thingsList = new ArrayList<Thing>();
   }
 
-  public SerialDevice(String portName, int baudRate) {
+  public ZigBeeDevice(String portName, int baudRate) {
     this.portName = portName;
     this.baudRate = baudRate;
     things = new Hashtable<String, Thing>();
@@ -60,7 +59,7 @@ public class SerialDevice implements Device {
 
   @Override
   public void close() throws IOException {
-    Logger.getLogger(SerialDevice.class.getName()).log(Level.INFO,
+    Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.INFO,
             "Closing device on {0}", serialPort.getName());
     //send("X");
     connected = false;
@@ -87,12 +86,12 @@ public class SerialDevice implements Device {
                 CommPortIdentifier.getPortIdentifier(portName);
       }
       if(portId==null) {
-        throw new IIOException("Invalid port " + portName);
+        throw new IOException("Invalid port " + portName);
       }
       serialPort =
               (SerialPort) portId.open(portId.getName(), baudRate);
       if(portId==null) {
-        throw new IIOException("Invalid port " + portName);
+        throw new IOException("Invalid port " + portName);
       }
 
       serialPort.setSerialPortParams(baudRate,
@@ -102,11 +101,11 @@ public class SerialDevice implements Device {
       serialPort.notifyOnOutputEmpty(true);
       outputStream = serialPort.getOutputStream();
       inputStream = serialPort.getInputStream();
-      Logger.getLogger(SerialDevice.class.getName()).log(Level.INFO,
+      Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.INFO,
               "Connection Stabilished with {0}", serialPort.getName());
     } catch (Exception e) {
       e.printStackTrace();
-      Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE,
+      Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.SEVERE,
               "Could not init the device on " + serialPort.getName(), e);
       serialPort.close();
     }
@@ -124,7 +123,7 @@ public class SerialDevice implements Device {
       Things.delay(50);
 
       if (resources != null) {
-        Logger.getLogger(SerialDevice.class.getName()).log(Level.INFO,
+        Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.INFO,
                 "Things API Compatible Device found! Resource String: {0}", resources);
         things = new Hashtable<String, Thing>();
         thingsList = new ArrayList<Thing>();
@@ -147,11 +146,11 @@ public class SerialDevice implements Device {
           }
           break;
         } catch (Exception e) {
-          Logger.getLogger(SerialDevice.class.getName()).log(Level.INFO,
+          Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.INFO,
                   "Wrong resource String. Parse error!", e);
         }
       } else {
-        Logger.getLogger(SerialDevice.class.getName()).log(Level.INFO,
+        Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.INFO,
                 "Empty Resource String - Nor a Thigns API device", resources);
       }
     }
@@ -161,7 +160,7 @@ public class SerialDevice implements Device {
   public void send(String s) throws IOException {
 
     if (outputStream == null) {
-      Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE,
+      Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.SEVERE,
               "This device ({0}) is not working because IO objects are null. "
               + "You should restart the device!", this.getName());
     } else {
@@ -178,7 +177,7 @@ public class SerialDevice implements Device {
       String msg = "This device (" + this.getName()
               + ") is not working because IO objects are null. "
               + "You should restart the device!";
-      Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE, msg);
+      Logger.getLogger(ZigBeeDevice.class.getName()).log(Level.SEVERE, msg);
       throw new IOException(msg);
     } else {
       int available = inputStream.available();
@@ -248,7 +247,7 @@ public class SerialDevice implements Device {
           /*serialPort =
            (SerialPort) portId.open(portId.getName(), 115200);
            Device device = new SerialDevice(serialPort);*/
-          Device device = new SerialDevice(portId, DEFAULT_BAUDRATE);
+          Device device = new ZigBeeDevice(portId, DEFAULT_BAUDRATE);
           device.open();
           device.discovery();
           if (device.connected()) {

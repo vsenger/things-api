@@ -84,7 +84,7 @@ public class DriveForm extends ThingsForm {
       case UP_KEY:
         setThingCommand("frente?");
         try {
-          sendMessage(getThingCommand() + speed);
+          sendCommand(getThingCommand() + speed);
         } catch (ThingException ex) {
           ex.printStackTrace();
         }
@@ -98,7 +98,7 @@ public class DriveForm extends ThingsForm {
       case DOWN_KEY:
         setThingCommand("re?");
         try {
-          sendMessage(getThingCommand() + speed);
+          sendCommand(getThingCommand() + speed);
         } catch (ThingException ex) {
           ex.printStackTrace();
         }
@@ -112,7 +112,7 @@ public class DriveForm extends ThingsForm {
       case LEFT_KEY:
         setThingCommand("ga?");
         try {
-          sendMessage(getThingCommand() + speed);
+          sendCommand(getThingCommand() + speed);
         } catch (ThingException ex) {
           ex.printStackTrace();
         }
@@ -126,7 +126,7 @@ public class DriveForm extends ThingsForm {
       case RIGHT_KEY:
         setThingCommand("gh?");
         try {
-          sendMessage(getThingCommand() + speed);
+          sendCommand(getThingCommand() + speed);
         } catch (ThingException ex) {
           ex.printStackTrace();
         }
@@ -140,7 +140,7 @@ public class DriveForm extends ThingsForm {
       case STOP_KEY:
         setThingCommand("parar");
         try {
-          sendMessage(getThingCommand());
+          sendCommand(getThingCommand());
         } catch (ThingException ex) {
           ex.printStackTrace();
         }

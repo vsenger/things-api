@@ -30,7 +30,7 @@ public class LightSensorForm extends ThingsForm {
       public void actionPerformed(ActionEvent ae) {
         String rcvd="";
         try {
-          rcvd = sendAndReceiveMessage("light");
+          rcvd = sendReceiveCommand("light");
         } catch (ThingException ex) {
           ex.printStackTrace();
         }

@@ -39,7 +39,7 @@ public class Server extends HttpServlet {
     String thingName = request.getRequestURI().replace("/things/thing/", "");
     try {
       String r = null;
-      if (command != null && command.equals("discovery")) {
+      if (thingName != null && thingName.equals("discovery")) {
         response.setContentType("text/plain;charset=UTF-8");
         response.getWriter().write(things.getThingsString());
       }
@@ -96,4 +96,15 @@ public class Server extends HttpServlet {
   public String getServletInfo() {
     return "Short description";
   }// </editor-fold>
+}
+
+class t {
+
+  public void changeDirection(String ip, String dir) {
+    things.discoveryNetworkThings(ip);
+    things.execute(dir);
+  }
+  public String readBluetoothLightSensor(String device)     throws Exception {
+    return things.bluetooth(device).execute("ligth");
+  }
 }

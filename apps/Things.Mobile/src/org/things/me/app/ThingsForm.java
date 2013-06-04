@@ -128,32 +128,31 @@ public abstract class ThingsForm extends Form {
     }
   }
 
-  public void sendMessage(String message) throws ThingException {
+  public void sendCommand(String command) throws ThingException {
     if (this.thingURL.equals("")) {
       if (Things.anything() == null) {
         return;
       }
-      Things.send(message);
+      Things.send(command);
       thingURL = Things.anything().getThingURL();
       saveThingURL();
     } else {
-      Things.bluetooth(thingURL).send(message);
+      Things.bluetooth(thingURL).send(command);
     }
-
   }
 
-  public String sendAndReceiveMessage(String message) throws ThingException {
+  public String sendReceiveCommand(String command) throws ThingException {
     if (this.thingURL.equals("")) {
       if (Things.anything() == null) {
         return "";
       }
-      Things.send(message);
+      Things.send(command);
       thingURL = Things.anything().getThingURL();
       saveThingURL();
       Things.delay(50);
       return Things.receive();
     } else {
-      Things.bluetooth(thingURL).send(message);
+      Things.bluetooth(thingURL).send(command);
       Things.delay(50);
       return Things.receive();
     }

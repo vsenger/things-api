@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.things</groupId>
-  <artifactId>gateway</artifactId>
+  <artifactId>gateway.embedded</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Things.Gateway</name>
+  <name>Things.Gateway.Embedded</name>
 
   <properties>
     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -16,27 +16,8 @@
     <org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
     <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
   </properties>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.richfaces</groupId>
-        <artifactId>richfaces-bom</artifactId>
-        <version>${org.richfaces.bom.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <dependencies>
 
-    <dependency>
-      <groupId>org.richfaces.ui</groupId>
-      <artifactId>richfaces-components-ui</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.richfaces.core</groupId>
-      <artifactId>richfaces-core-impl</artifactId>
-    </dependency>
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-web-api</artifactId>

@@ -33,7 +33,7 @@ public class RelayForm extends ThingsForm {
       public void actionPerformed(ActionEvent ae) {
         if (on) {
           try {
-            sendMessage(RelayForm.this.getThingCommand() + "0");
+            sendCommand(RelayForm.this.getThingCommand() + "0");
             //Things.bluetooth(deviceURL).send(RelayForm.this.getThingCommand() + "0");
           } catch (ThingException ex) {
             ThingsMenu.getInstance().updateStatus(ex.getMessage());
@@ -41,7 +41,7 @@ public class RelayForm extends ThingsForm {
         } 
         else {
           try {
-            sendMessage(RelayForm.this.getThingCommand() + "1");
+            sendCommand(RelayForm.this.getThingCommand() + "1");
             //Things.bluetooth(deviceURL).send(RelayForm.this.getThingCommand() + "1");
           } catch (ThingException ex) {
             ThingsMenu.getInstance().updateStatus(ex.getMessage());

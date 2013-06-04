@@ -3,7 +3,7 @@ $(document).ready(function(){
   var lampon=false;
   var aberto=false;
   var readingSensor = true;
-  var identificador = self.setInterval(atualizar, 10000);
+  var identificador = self.setInterval(atualizar, 1000);
   function atualizar() {
     if(readingSensor) {
       
@@ -18,7 +18,7 @@ $(document).ready(function(){
       $.ajax({  
         type: "POST",  
         dataType: "text",
-        url: things + "light1" ,
+        url: things + "light" ,
         success: function(data) {  
           $('#sensorLight').html(data);
         }  
@@ -73,7 +73,7 @@ return false;
     lampon=!lampon; 
     $.ajax({  
       type: "GET",  
-      url: things + "relay1?" + (lampon ? 1 : 0),  
+      url: things + "relay2?" + (lampon ? 1 : 0),  
       success: function() {  
     
       }  
