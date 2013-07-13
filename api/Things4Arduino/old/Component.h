@@ -10,16 +10,13 @@
 #define TEMP    5
 #define SERIAL 	6
 
-#define PING    7
+#define LIB 	7
+#define PING    8
 
-#define ALL     8
-#define CUSTOM  9
+#define ALL     9
+
 class Component  {
  private:
-   typedef char* (*customRead)();
-   typedef char* (*customWrite)(char*);
-   customRead meuCustomRead;
-   customWrite meuCustomWrite;
   public:    
       char* name;
       int   type;
@@ -27,8 +24,6 @@ class Component  {
       int   state;
 
       Component(char*, int, int);
-      Component(char*, int, int, customRead, customWrite);
-
       Component();
       char* getValue();
       char* write(char *);

@@ -1,6 +1,6 @@
 #include <Component.h>
 #include <Arduino.h>
-#include <IRremote.h>
+
 Component::Component() {}
 //very high cost to have each state in a string, this var is for all objects
 char readValue[15];
@@ -12,19 +12,7 @@ Component::Component(char* name1, int type1, int port1) {
   if(type==DIGITAL)  {
     pinMode(port, OUTPUT);
   }
-  emptyReadValue();
-  state=0;
-}
-Component::Component(char* name1, int type1, int port1, customRead cr, customWrite cw) {
-  name=name1;
-  type=type1;
-  port=port1;
-  meuCustomRead =cr;
-  meuCustomWrite =cw;
 
-  if(type==DIGITAL)  {
-    pinMode(port, OUTPUT);
-  }
   emptyReadValue();
   state=0;
 }
@@ -34,15 +22,12 @@ char* Component::getValue() {
 }
 
 char* Component::getTypeName() {
-   static char* typeNames[] = {"DIGITAL", "ANALOG", "PWM", "RELAY", "LIGHT", "TEMPERATURE", "SERIAL", "PING", "ALL", "CUSTOM"};
+   static char* typeNames[] = {"DIGITAL", "ANALOG", "PWM", "RELAY", "LIGHT", "TEMPERATURE", "SERIAL", "LIB", "PING"};
   return typeNames[type];
 }
 
 char* Component::write(char* c1) {
  char* r="\0";
- //debug Serial.println("DEntro do write... ");
- //debug Serial.println(c1);
-
  if(type==DIGITAL || type==RELAY) {
    state = atoi(c1);
    digitalWrite(port, state);
@@ -57,9 +42,6 @@ char* Component::write(char* c1) {
    Serial.print(c1);
    return r;
  }   
- else if(type==CUSTOM) {
-   return meuCustomWrite(c1); 
- }
 }
 
 void Component::emptyReadValue() {
@@ -71,7 +53,7 @@ char* Component::read() {
   emptyReadValue();
   if(type==ANALOG || type==LIGHT || type==TEMP) {
     //in my country we call this code as "gambiarra" #Gambiarrafeelings
-    //mas na verdade o sensor de temperatura analógico causa no ADC do ARduino! 
+    //mas na verdade o sensor de temperatura analógico causa! 
     state = analogRead(port);
     delay(5);
     state = analogRead(port);
@@ -87,7 +69,7 @@ char* Component::read() {
     return getValue();
   } else if(type==SERIAL) {
 
-    int counter=0; 
+    int counter=0;
     while(Serial.available()>0 && counter<15) 
     {
       char c = Serial.read(); 
@@ -95,9 +77,8 @@ char* Component::read() {
       readValue[counter++]=c;
     }
     return readValue;
-  } else if(type==CUSTOM) {
-    //should call function pointer here..
-    return meuCustomRead();
+  } else if(type==LIB) {
+    //should call function pointer here...
 
   } else if(type==PING) {
     //Parallax ping based on digital pulseIn
