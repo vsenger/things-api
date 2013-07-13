@@ -21,8 +21,7 @@ import org.things.device.SerialDevice;
  */
 public class Things {
 
-  private static final long MIN_INTERVAL = 40;
-
+  private static final long MIN_INTERVAL = 50;
   public Things() {
   }
   //para uso em Java SE
@@ -129,6 +128,7 @@ public class Things {
               new SerialDevice(deviceName, 115200);
       try {
         device.open();
+        Things.delay(1500);
         this.devices.add(device);
         this.devicesTable.put(deviceName, device);
 
@@ -142,9 +142,14 @@ public class Things {
 
     String r = null;
     try {
-      device.send(thing + "?" + args);
+       if(args!=null && !args.equals("")) {
+            device.send(thing + "?" + args);
+        }
+       else {
+            device.send(thing);
+        }
       if (device instanceof SerialDevice) {
-        Things.delay(40);//era 30
+        Things.delay(50);//era 40... ahahahah antes era 30
       }
       r = device.receive();
     } catch (Exception ex) {

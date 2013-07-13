@@ -16,12 +16,12 @@ public class Teste {
     public static void main(String[] args) {
         Robot.parar();
         
-        /*System.out.println(Robot.sensorDistancia(1));
+        System.out.println(Robot.sensorDistancia(2));
         Robot.mudarServo(90);
-        distancia = Robot.sensorDistancia(1);
+        distancia = Robot.sensorDistancia(2);
         while (distancia > 15) {
             Robot.frente(3);
-            distancia = Robot.sensorDistancia(1);
+            distancia = Robot.sensorDistancia(2);
 
         }
         if (distancia > 0 && distancia < 15) {
@@ -29,7 +29,7 @@ public class Teste {
             Robot.esperar(1500);
             Robot.movimentoAleatorio(3);
             Robot.esperar(1000);
-        }*/
+        }
 
 
     }

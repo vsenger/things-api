@@ -23,7 +23,7 @@ import org.things.Things;
  */
 public class SerialDevice implements Device {
 
-  private static final int DEFAULT_BAUDRATE = 19200;
+  private static final int DEFAULT_BAUDRATE = 115200;
   final static int DISCOVERY_RETRY = 3;
   CommPortIdentifier portId;
   String portName;
@@ -103,6 +103,7 @@ public class SerialDevice implements Device {
       inputStream = serialPort.getInputStream();
       Logger.getLogger(SerialDevice.class.getName()).log(Level.INFO,
               "Connection Stabilished with {0}", serialPort.getName());
+      Things.delay(1500);
     } catch (Exception e) {
       e.printStackTrace();
       Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE,
