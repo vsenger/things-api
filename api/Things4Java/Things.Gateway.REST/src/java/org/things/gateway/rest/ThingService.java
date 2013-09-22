@@ -19,8 +19,11 @@ import static org.things.Things.*;
 @Path("/")
 public class ThingService {
 
+    public ThingService() {
+        ARDUINO = System.getProperty("things.port", "/dev/ttyUSB0");
+    }
     int relays[] = {0, 24, 25, 22, 27, 18, 23};
-    String ARDUINO = "/dev/ttyUSB0";
+    String ARDUINO;
     Runtime rt = Runtime.getRuntime();
 
     @GET
