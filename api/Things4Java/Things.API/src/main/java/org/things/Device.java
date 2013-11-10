@@ -22,4 +22,5 @@ public interface Device {
   public void open() throws IOException;
   public void discovery() throws Exception;
   public boolean connected();
+  public void addEventListener();
 }

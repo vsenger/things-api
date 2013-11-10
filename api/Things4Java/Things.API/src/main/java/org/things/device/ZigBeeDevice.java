@@ -275,4 +275,9 @@ public class ZigBeeDevice implements Device {
   public void setPortName(String portName) {
     this.portName = portName;
   }
+
+    @Override
+    public void addEventListener() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

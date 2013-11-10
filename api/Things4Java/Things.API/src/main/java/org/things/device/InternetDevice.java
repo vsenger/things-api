@@ -140,4 +140,9 @@ public class InternetDevice implements Device {
   public String getID() {
     return ip;
   }
+
+    @Override
+    public void addEventListener() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
