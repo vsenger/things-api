@@ -106,8 +106,10 @@ public class ThingService {
     @Produces({MediaType.TEXT_HTML, MediaType.TEXT_PLAIN})
     public String execute(@PathParam("command") String commandP) {
         return things.execute(FTDI, commandP, null);
-    }
 
+        }
+    {
+    }
     @GET
     @Path("{command}/{param}")
     @Produces({MediaType.TEXT_HTML, MediaType.TEXT_PLAIN})

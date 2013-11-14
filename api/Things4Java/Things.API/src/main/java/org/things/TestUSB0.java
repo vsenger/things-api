@@ -16,30 +16,23 @@ import org.things.device.SerialDevice;
 public class TestUSB0 {
 
     public static void main(String[] args) throws IOException {
-        /*Device things = new SerialDevice("/dev/ttyUSB0", 115200);
-        things.open();
-        Things.delay(1500);
-        things.send("humidity");
+        //Device things = new SerialDevice("/dev/ttyUSB0", 115200);
+        //things.open();
+        //Things.delay(1500);
+        /*things.send("humidity");
         Things.delay(40);
 
         String s = things.receive();
         System.out.println("Luz: " + s);
         things.close();*/
-        System.out.print("Sensor Luz ");
-         System.out.println(things.execute("/dev/ttyUSB0", "light", null));
-         System.out.print("Sensor Temperatura Interna ");
-         System.out.println(things.execute("/dev/ttyUSB0", "temp_in", null));
-         System.out.print("Sensor Temperatura Externa ");
-         System.out.println(things.execute("/dev/ttyUSB0", "temp_out", null));
-         Things.delay(50);
-         System.out.print("Sensor Humidade ");
-         System.out.println(things.execute("/dev/ttyUSB0", "humidity", null));
          
-         things.execute("/dev/ttyUSB0", "servo", "1");
+         things.execute("/dev/ttyUSB0", "led", "1");
          delay(1000);
-         things.execute("/dev/ttyUSB0", "servo", "180");
+         things.execute("/dev/ttyUSB0", "led", "0");
          delay(1000);
-         things.execute("/dev/ttyUSB0", "servo", "90");
+         things.execute("/dev/ttyUSB0", "led", "1");
+         delay(1000);
+         things.execute("/dev/ttyUSB0", "led", "0");
          delay(1000);
         things.close();
     }
