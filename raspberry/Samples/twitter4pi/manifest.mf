@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+X-COMMENT: Main-Class will be added automatically by build
+Sealed: true
+Main-Class: twitter.pi.Tweet4Pi
+Class-Path: lib/things-api-1.0-SNAPSHOT.jar lib/twitter4j-core-3.0.3.jar lib/pi4j-core.jar

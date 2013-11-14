@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="AutomationFX.jnlp">
+  <information>
+    <title>AutomationFX</title>
+    <vendor>bruno</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="AutomationFX.jar" size="148934" download="eager" />
+    <jar href="lib/cglib-2.1.88.jar" size="307595" download="eager" />
+    <jar href="lib/guava-14.0.1.jar" size="2333748" download="eager" />
+    <jar href="lib/hk2-api-2.1.88.jar" size="125662" download="eager" />
+    <jar href="lib/hk2-locator-2.1.88.jar" size="134659" download="eager" />
+    <jar href="lib/hk2-utils-2.1.88.jar" size="56994" download="eager" />
+    <jar href="lib/javax.inject-2.1.88.jar" size="8608" download="eager" />
+    <jar href="lib/javax.ws.rs-api-2.0.jar" size="125109" download="eager" />
+    <jar href="lib/jersey-client.jar" size="123936" download="eager" />
+    <jar href="lib/jersey-common.jar" size="620255" download="eager" />
+  </resources>
+<security>
+  <all-permissions/>
+</security>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AutomationFX" >
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="automationfx.AutomationFX"  name="AutomationFX" />
+  <update check="always"/>
+</jnlp>

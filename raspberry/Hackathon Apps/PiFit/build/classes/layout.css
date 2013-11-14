@@ -1,0 +1,19 @@
+/* 
+    Document   : newCascadeStyleSheet
+    Created on : 13/07/2013, 12:20:45
+    Author     : Rogério
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+.root{
+   -fx-background-image: url("bg_1024.png");
+   -fx-background-repeat: stretch;
+}
+.heart{
+    -fx-alignment: TOP_RIGHT;
+    
+}
