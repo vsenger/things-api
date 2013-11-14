@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="file:/media/Vinicius/EletronLivre/Program-ME/Arduino%20Sketches/Projetos/JavaOne2010/ArduhomeJavaFX/dist/" href="DesktopApplication1_browser.jnlp">
+    <information>
+        <title>DesktopApplication1</title>
+        <vendor>vsenger</vendor>
+        <homepage href=""/>
+        <description>DesktopApplication1</description>
+        <icon kind="splash" href="http://dl.javafx.com/1.3/splash.png"/>
+        <offline-allowed/>
+    </information>
+    <resources>
+        <j2se version="1.5+"/>
+        <extension name="JavaFX Runtime" href="http://dl.javafx.com/1.3/javafx-rt.jnlp"/>
+        <jar href="DesktopApplication1.jar" main="true" size="30375"/>
+        <jar href="lib/RXTXcomm.jar" size="59322"/>
+    </resources>
+    <applet-desc name="DesktopApplication1" main-class="com.sun.javafx.runtime.adapter.Applet" progress-class="com.javafx.progressbar.ProgressManager" width="200" height="200">
+        <param name="MainJavaFXScript" value="desktopapplication1.Main"/>
+    </applet-desc>
+    <update check="always"/>
+</jnlp>

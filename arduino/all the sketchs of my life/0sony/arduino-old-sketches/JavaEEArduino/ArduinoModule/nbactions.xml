@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <goals>
+                <goal>package</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.1.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Dfelix.system.properties=file:"${project.build.directory}/run.properties" -cp "${project.build.directory}/felix.jar" org.apache.felix.main.Main</exec.args>
+                <exec.executable>java</exec.executable>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>run-on-felix</activatedProfile>
+            </activatedProfiles>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <goals>
+                <goal>package</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.1.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -Dfelix.system.properties=file:"${project.build.directory}/run.properties" -cp "${project.build.directory}/felix.jar" org.apache.felix.main.Main</exec.args>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>run-on-felix</activatedProfile>
+            </activatedProfiles>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <goals>
+                <goal>package</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.1.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>${profiler.args} -Dfelix.system.properties=file:"${project.build.directory}/run.properties" -cp "${project.build.directory}/felix.jar" org.apache.felix.main.Main</exec.args>
+                <exec.executable>${profiler.java}</exec.executable>
+                <profiler.action>profile</profiler.action>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>run-on-felix</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>

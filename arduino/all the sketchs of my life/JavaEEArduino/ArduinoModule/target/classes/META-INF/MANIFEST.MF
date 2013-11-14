@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Export-Package: br.com.eletronlivre.arduino.osgi;uses:="org.osgi.frame
+ work"
+Built-By: vsenger
+Tool: Bnd-0.0.357
+Bundle-Name: ArduinoServiceImpl OSGi Bundle
+Created-By: Apache Maven Bundle Plugin
+Bundle-Version: 1.0.0.SNAPSHOT
+Build-Jdk: 1.6.0_18
+Bnd-LastModified: 1305319842063
+Bundle-ManifestVersion: 2
+Bundle-Activator: br.com.eletronlivre.arduino.osgi.ArduinoActivator
+Import-Package: br.com.eletronlivre.arduino.osgi,org.osgi.framework;ve
+ rsion="1.5"
+Bundle-SymbolicName: br.com.eletronlivre.arduino.ArduinoModule
+

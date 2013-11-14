@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-Localization: exemplo/Bundle
+Bundle-Name: %OpenIDE-Module-Name
+Bundle-SymbolicName: exemplo
+Bundle-Version: 1.0
+

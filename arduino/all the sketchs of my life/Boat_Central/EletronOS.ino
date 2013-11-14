@@ -1,0 +1,7 @@
+
+class EletronOS {
+   private:
+   
+   public:
+   
+};
