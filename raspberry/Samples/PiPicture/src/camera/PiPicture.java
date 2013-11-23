@@ -79,7 +79,10 @@ public final class PiPicture {
                 Thread.sleep(500);
             }
         } catch (Exception e) {
+            System.out.println("Something was wrong...");
+            e.printStackTrace();
         } finally {
+            
         }
     }
 
