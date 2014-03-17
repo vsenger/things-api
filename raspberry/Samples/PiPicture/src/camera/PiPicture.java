@@ -14,7 +14,7 @@ import java.util.concurrent.Callable;
 public final class PiPicture {
 
     static boolean alternate;
-    public static String PICTUREFILENAME = "bikepic";
+    public static String PICTUREFILENAME = "picamera";
     static Runtime rt = Runtime.getRuntime();
     static int increment;
 
@@ -22,12 +22,12 @@ public final class PiPicture {
         final GpioPinDigitalOutput myLed[] = new GpioPinDigitalOutput[3];
         try {
             final GpioController gpio = GpioFactory.getInstance();
-            final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_07,
+            final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_00,
                     PinPullResistance.PULL_DOWN);
             // setup gpio pins #04, #05, #06 as an output pins and make sure they are all LOW at startup
-            myLed[0] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "LED #1", PinState.LOW);
-            myLed[1] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "LED #2", PinState.LOW);
-            myLed[2] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "LED #3", PinState.LOW);
+            myLed[0] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "LED #1", PinState.LOW);
+            myLed[1] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "LED #2", PinState.LOW);
+            myLed[2] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "LED #3", PinState.LOW);
             System.out.println("Starting camera");
             myLed[0].setState(true);
             Thread.sleep(500);
@@ -47,7 +47,7 @@ public final class PiPicture {
                     if (!alternate) {
                         try {
                             myLed[1].setState(true);
-                            Process pr1 = rt.exec("raspistill -o /home/pi/linux-head/pictures/" + PICTUREFILENAME + increment++ + ".jpg");
+                            Process pr1 = rt.exec("raspistill -o /home/pi/pictures/" + PICTUREFILENAME + increment++ + ".jpg");
                             pr1.waitFor();
                             myLed[1].setState(false);
 
