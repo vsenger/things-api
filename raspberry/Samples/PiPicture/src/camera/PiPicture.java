@@ -24,42 +24,24 @@ public final class PiPicture {
             final GpioController gpio = GpioFactory.getInstance();
             final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_00,
                     PinPullResistance.PULL_DOWN);
-            // setup gpio pins #04, #05, #06 as an output pins and make sure they are all LOW at startup
             myLed[0] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "LED #1", PinState.LOW);
             myLed[1] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "LED #2", PinState.LOW);
             myLed[2] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "LED #3", PinState.LOW);
             System.out.println("Starting camera");
-            myLed[0].setState(true);
-            Thread.sleep(500);
-            myLed[0].setState(false);
-            Thread.sleep(500);
-            myLed[1].setState(true);
-            Thread.sleep(500);
-            myLed[1].setState(false);
-            Thread.sleep(500);
-            myLed[2].setState(true);
-            Thread.sleep(500);
-            myLed[2].setState(false);
-            Thread.sleep(500);
+            blink(myLed[0], 3, 500);
+            blink(myLed[1], 3, 500);
+            blink(myLed[2], 3, 500);
             myLed[0].setState(true);
             myButton.addTrigger(new GpioCallbackTrigger(new Callable<Void>() {
                 public Void call() throws Exception {
                     if (!alternate) {
                         try {
                             myLed[1].setState(true);
-                            Process pr1 = rt.exec("raspistill -o /home/pi/pictures/" + PICTUREFILENAME + increment++ + ".jpg");
+                            Process pr1 = rt.exec("raspistill -o /home/pi/" + PICTUREFILENAME + increment++ + ".jpg");
                             pr1.waitFor();
                             myLed[1].setState(false);
-
                         } catch (IOException ex) {
-                            myLed[2].setState(true);
-                            Thread.sleep(500);
-                            myLed[2].setState(false);
-                            Thread.sleep(500);
-                            myLed[2].setState(true);
-                            Thread.sleep(500);
-                            myLed[2].setState(false);
-                            Thread.sleep(500);
+                            blink(myLed[2], 3, 500);
                             ex.printStackTrace();
                         }
                         alternate = true;
@@ -69,7 +51,6 @@ public final class PiPicture {
                     }
                     System.out.println(
                             " --> GPIO TRIGGER CALLBACK RECEIVED " + increment);
-
                     return null;
                 }
             }));
@@ -82,8 +63,15 @@ public final class PiPicture {
             System.out.println("Something was wrong...");
             e.printStackTrace();
         } finally {
-            
         }
     }
 
+    static void blink(GpioPinDigitalOutput myLed, int nTimes, int delay) throws Exception {
+        for (int x = 0; x < nTimes; x++) {
+            myLed.setState(true);
+            Thread.sleep(delay);
+            myLed.setState(false);
+            Thread.sleep(delay);
+        }
+    }
 }
