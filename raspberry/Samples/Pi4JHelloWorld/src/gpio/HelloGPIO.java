@@ -3,30 +3,28 @@ package gpio;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
 public final class HelloGPIO {
-    public static void main(String[] args) throws Exception {
-        GpioPinDigitalOutput myLed[] = new GpioPinDigitalOutput[3];
-        GpioController gpio = GpioFactory.getInstance();
-        myLed[0] = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02);
-        myLed[0].setState(true);
-        Thread.sleep(500);
-        myLed[0].setState(false);
-        Thread.sleep(500);
-        myLed[0].setState(true);
-        Thread.sleep(500);
-        myLed[0].setState(false);
-        Thread.sleep(500);
-        myLed[0].setState(true);
-        Thread.sleep(500);
-        myLed[0].setState(false);
-        Thread.sleep(500);
-        myLed[0].setState(true);
-        Thread.sleep(500);
-        myLed[0].setState(false);
-        Thread.sleep(500);
-    }
 
+    public static void main(String[] args) throws Exception {
+        if(args.length!=2) {
+            System.out.println("Usage: HelloGPIO <blinks> <interval>");
+            return;
+        }
+        int numberOfBlinks, interval;
+        numberOfBlinks = Integer.parseInt(args[0]);
+        interval = Integer.parseInt(args[1]);
+
+        GpioPinDigitalOutput myLed;
+        GpioController gpio = GpioFactory.getInstance();
+        myLed = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07);
+
+        for (int x = 0; x < numberOfBlinks; x++) {
+            myLed.setState(true);
+            Thread.sleep(interval);
+            myLed.setState(false);
+            Thread.sleep(interval);
+        }
+    }
 }
