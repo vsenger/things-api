@@ -65,7 +65,7 @@ public class SerialDevice implements Device, SerialPortEventListener {
     }
 
     @Override
-    public void close() throws IOException {
+    public synchronized void close() throws IOException {
         Logger.getLogger(SerialDevice.class.getName()).log(Level.INFO,
                 "Closing device on {0}", serialPort.getName());
         //send("X");
@@ -86,7 +86,7 @@ public class SerialDevice implements Device, SerialPortEventListener {
         }
     }
 
-    public void open() throws IOException {
+    public synchronized void open() throws IOException {
         try {
             if (portName != null) {
                 portId =
@@ -122,7 +122,7 @@ public class SerialDevice implements Device, SerialPortEventListener {
     }
 
     @Override
-    public void discovery() throws Exception {
+    public synchronized  void discovery() throws Exception {
         //Those times are totally dependent with the kind of communication...
         for (int x = 0; x < DISCOVERY_RETRY; x++) {
             System.out.println("Delaying 2500 - try no." + x);
@@ -165,7 +165,7 @@ public class SerialDevice implements Device, SerialPortEventListener {
         }
     }
 
-    public void send(char s) throws IOException {
+    public synchronized void send(char s) throws IOException {
 
         if (outputStream == null) {
             Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE,
@@ -179,7 +179,7 @@ public class SerialDevice implements Device, SerialPortEventListener {
     }
 
     @Override
-    public void send(String s) throws IOException {
+    public synchronized void send(String s) throws IOException {
 
         if (outputStream == null) {
             Logger.getLogger(SerialDevice.class.getName()).log(Level.SEVERE,
@@ -193,7 +193,7 @@ public class SerialDevice implements Device, SerialPortEventListener {
     }
 
     @Override
-    public String receive() throws IOException {
+    public synchronized String receive() throws IOException {
 
         if (inputStream == null) {
             String msg = "This device (" + this.getName()
@@ -217,7 +217,7 @@ public class SerialDevice implements Device, SerialPortEventListener {
         }
     }
 
-    public String receive(long timeout) throws IOException {
+    public synchronized String receive(long timeout) throws IOException {
 
         if (inputStream == null) {
             String msg = "This device (" + this.getName()

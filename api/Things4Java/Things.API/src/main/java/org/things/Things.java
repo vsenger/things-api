@@ -39,7 +39,7 @@ public class Things {
     protected Map<String, Device> devicesTable;
     private long lastSend;
 
-    public String getThingsString() {
+    public synchronized String getThingsString() {
         int t = 0;
         for (Device device : devices) {
             t += device.getThings().size();
@@ -58,7 +58,7 @@ public class Things {
         return retornao;
     }
 
-    public Thing find(String id) {
+    public synchronized Thing find(String id) {
         Thing thing = null;
         for (Device device : devices) {
             if (device.getThings().containsKey(id)) {
@@ -68,7 +68,7 @@ public class Things {
         return thing;
     }
 
-    public void timeControl() {
+    public synchronized void timeControl() {
         if (System.currentTimeMillis() - lastSend < MIN_INTERVAL) {
             delay(System.currentTimeMillis() - lastSend);
         }
@@ -117,22 +117,24 @@ public class Things {
         return r;
     }
 
-    public Device getDevice(String deviceName) {
+    public synchronized Device getDevice(String deviceName) {
         if (devices == null) {
+            System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyUSB0:/dev/ttyUSB1:/dev/ttyUSB2:/dev/ttyUSB3:/dev/rfcomm0:/dev/rfcomm0:/dev/rfcomm0:/dev/rfcomm1:/dev/rfcomm2:/dev/rfcomm3:/dev/ttyAMA0:/dev/ttyAMA1:/dev/ttyAMA2:/dev/ttyAMA3:/dev/ttyAMA4");
             devices = new ArrayList<Device>();
             devicesTable = new HashMap<String, Device>();
         }
 
         Device device = null;
         if (!devicesTable.containsKey(deviceName)) {
-            device =
-                    new SerialDevice(deviceName, 115200);
+            device
+                    = new SerialDevice(deviceName, 115200);
             try {
                 device.open();
                 Things.delay(1500);
                 this.devices.add(device);
                 this.devicesTable.put(deviceName, device);
             } catch (IOException ex) {
+                Logger.getLogger(Things.class.getName()).log(Level.SEVERE, "Error opening connection with Serial Device on port " + deviceName);
                 Logger.getLogger(Things.class.getName()).log(Level.SEVERE, null, ex);
                 return null;
             }
@@ -142,7 +144,7 @@ public class Things {
         return device;
 
     }
-    
+
     public synchronized void send(String deviceName, String data) {
         Device device = getDevice(deviceName);
         if (device != null) {
@@ -152,11 +154,12 @@ public class Things {
                 Logger.getLogger(Things.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-    } 
+
+    }
+
     public synchronized String receive(String deviceName) {
         Device device = getDevice(deviceName);
-        String r  = null;
+        String r = null;
         if (device != null) {
             try {
                 r = device.receive();
@@ -165,8 +168,8 @@ public class Things {
             }
         }
         return r;
-        
-    } 
+
+    }
 
     public synchronized String execute(String deviceName, String thing, String args) {
         timeControl();
@@ -175,18 +178,21 @@ public class Things {
             return null;
         }
 
-
         String r = null;
         try {
+            int delay = 0;
+            String tosend = null;
             if (args != null && !args.equals("")) {
-                device.send(thing + "?" + args);
+                tosend = thing + "?" + args;
             } else {
-                device.send(thing);
+                tosend = thing;
             }
+            device.send(tosend);
+
             if (device instanceof SerialDevice) {
-                //Things.delay(50);//era 40... ahahahah antes era 30
+                Things.delay(tosend.length() * 2);//a cada read no firmware arduino tem um delay(2) misterioso, sem ele não funfa sem flow control...
             }
-            //r = device.receive();
+            r = device.receive();
         } catch (Exception ex) {
             Logger.getLogger(Things.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -194,7 +200,33 @@ public class Things {
         return r;
     }
 
-    public void close() {
+    public synchronized String execute(String deviceName, String thing, String args, long delay) {
+        timeControl();
+        Device device = getDevice(deviceName);
+        if (device == null) {
+            return null;
+        }
+
+        String r = null;
+        try {
+            String tosend = null;
+            if (args != null && !args.equals("")) {
+                tosend = thing + "?" + args;
+            } else {
+                tosend = thing;
+            }
+            device.send(tosend);
+            Things.delay(delay);//a cada read no firmware arduino tem um delay(2) misterioso, sem ele não funfa sem flow control...
+
+            r = device.receive();
+        } catch (Exception ex) {
+            Logger.getLogger(Things.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Logger.getLogger(Things.class.getName()).log(Level.INFO, "Component " + thing + " not found!");
+        return r;
+    }
+
+    public synchronized void close() {
         if (devices == null || devices.isEmpty()) {
             return;
         }
@@ -209,7 +241,7 @@ public class Things {
         }
     }
 
-    public Collection<Device> discoveryNetworkThings(String args) {
+    public synchronized Collection<Device> discoveryNetworkThings(String args) {
         if (devices == null) {
             devices = new ArrayList<Device>();
             devicesTable = new HashMap<String, Device>();
@@ -238,7 +270,7 @@ public class Things {
         return devicesFound;
     }
 
-    public Device discoverySerial(String serial, int baudRate) throws Exception {
+    public synchronized Device discoverySerial(String serial, int baudRate) throws Exception {
         if (devices == null) {
             devices = new ArrayList<Device>();
             devicesTable = new HashMap<String, Device>();
@@ -246,8 +278,8 @@ public class Things {
         if (devicesTable.containsKey(serial)) {
             return devicesTable.get(serial);
         }
-        SerialDevice device =
-                new SerialDevice(serial, baudRate);
+        SerialDevice device
+                = new SerialDevice(serial, baudRate);
         device.open();
         device.discovery();
         if (device.getResourceString() == null) {
@@ -260,11 +292,11 @@ public class Things {
         }
     }
 
-    public Collection<Device> getDevices() {
+    public synchronized Collection<Device> getDevices() {
         return devices;
     }
 
-    public Collection<Thing> getEveryThing() {
+    public synchronized Collection<Thing> getEveryThing() {
         ArrayList<Thing> ethings = new ArrayList<Thing>();
         if (devices != null) {
             for (Device d : devices) {
